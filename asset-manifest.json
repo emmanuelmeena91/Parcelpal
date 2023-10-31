@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/Parcelpal/static/css/main.54b0c4f3.css",
-    "main.js": "/Parcelpal/static/js/main.9fc15c1f.js",
+    "main.js": "/Parcelpal/static/js/main.7bdcd90f.js",
     "static/js/787.d7d40af7.chunk.js": "/Parcelpal/static/js/787.d7d40af7.chunk.js",
     "index.html": "/Parcelpal/index.html",
     "main.54b0c4f3.css.map": "/Parcelpal/static/css/main.54b0c4f3.css.map",
-    "main.9fc15c1f.js.map": "/Parcelpal/static/js/main.9fc15c1f.js.map",
+    "main.7bdcd90f.js.map": "/Parcelpal/static/js/main.7bdcd90f.js.map",
     "787.d7d40af7.chunk.js.map": "/Parcelpal/static/js/787.d7d40af7.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.54b0c4f3.css",
-    "static/js/main.9fc15c1f.js"
+    "static/js/main.7bdcd90f.js"
   ]
 }
