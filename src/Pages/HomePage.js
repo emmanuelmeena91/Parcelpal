@@ -7,3 +7,4 @@ export const HomePage = () => {
     </div>
   )
 }
+ 

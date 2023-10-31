@@ -13,9 +13,9 @@ export default function App() {
   return (
     <Router>
       <>
-        <NavBar />
-        <Routes>
-          <Route index path="/" element={<HomePage />} />
+        <NavBar /> 
+        <Routes> 
+          <Route index path="/parcel" element={<HomePage />} />
           <Route path="/sendparcel" element={<SendParcelPage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/contact" element={<ContactPage />} />
