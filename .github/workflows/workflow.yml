@@ -16,6 +16,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v1
+             with:
+                  node-version: 16.13.0
 
       - name: Install and build
         run: npm install && npm run build
