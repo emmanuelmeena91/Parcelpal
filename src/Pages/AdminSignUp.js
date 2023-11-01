@@ -9,7 +9,7 @@ import axiosInstance from '../axios';
 import GridLoaderSpinner from '../Components/GridLoader';
 
 export default function AdminSignUpPage() {
-
+    const adminSecretKey = process.env.REACT_APP_ADMIN_SECRET_KEY;
     const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate()
 
@@ -18,44 +18,48 @@ export default function AdminSignUpPage() {
         toast.error("Server did not respond within 15 seconds. Please try again later.");
     };
 
-
-
     const handleFormSubmit = async (values) => {
-        setIsLoading(true);
+      const { special_key, ...rest } = values; 
+      setIsLoading(true);
 
-        try {
-            const resp = await axiosInstance.post('adminRegister/', values);
-
-            const timeout = setTimeout(() => {
-                handleTimeout();
-            }, 15000); // 15 seconds
-        
-            if (resp.ok) {
-                clearTimeout(timeout); // Clear the timeout since we got a response
-                setTimeout(() => {
-                    setIsLoading(false);
-                    toast.success("Registration is successful,Log in to continue", {
-                        onClose: () => {
-                            navigate("/admin-login");
-                        }
-                    });
-                }, 2000);
-            } else {
-                let errorData = await resp.json();
-                if (resp.status === 400) {
-                    toast.error("Username or email already exists.");
-                } else if (resp.status === 500) {
-                    toast.error("Internal server error. Please try again later.");
-                } else {
-                    toast.error(errorData.message);
-                }
+      if (special_key !== adminSecretKey) {
+        toast.error("Access Denied: Invalid special key");
+        return;
+      }
+    
+      try {
+        const resp = await axiosInstance.post('adminRegister/', values);
+    
+        const timeout = setTimeout(() => {
+          handleTimeout();
+        }, 15000); 
+    
+        if (resp.status === 201) {
+          clearTimeout(timeout);
+          setIsLoading(false);
+          toast.success("Registration is successful, Log in to continue", {
+            onClose: () => {
+              setTimeout(() => {
+                navigate("/admin-login");
+              }, 4000); 
             }
-        } catch (error) {
-            console.error("Network error:", error);
-            toast.error("Network error. Please try again later.");
-        } finally {
-            setIsLoading(false);
+          });
+        } else if (resp.status === 500) {
+          toast.error("Internal server error. Please try again later.");
+        } else {
+          toast.error("Something went wrong");
         }
+      } catch (error) {
+        console.error("Network error:", error);
+    
+        if (error.response && error.response.status === 400) {
+          toast.error("Username or email already exists.");
+        } else {
+          toast.error("Network error. Please try again later.");
+        }
+      } finally {
+        setIsLoading(false);
+      }
     };
   
     const formSchema = yup.object().shape({

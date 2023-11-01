@@ -18,46 +18,44 @@ export default function SignUpPage() {
         toast.error("Server did not respond within 15 seconds. Please try again later.");
     };
 
-
-
     const handleFormSubmit = async (values) => {
-        setIsLoading(true);
-
-        try {
-            const resp = await axiosInstance.post('register/', values);
-
-            const timeout = setTimeout(() => {
-                handleTimeout();
-            }, 15000); // 15 seconds
-        
-            if (resp.ok) {
-                clearTimeout(timeout); // Clear the timeout since we got a response
-                setTimeout(() => {
-                    setIsLoading(false);
-                    toast.success("Registration is successful,Log in to continue", {
-                        onClose: () => {
-                            navigate("/login");
-                        }
-                    });
-                }, 2000);
-            } else {
-                let errorData = await resp.json();
-                if (resp.status === 400) {
-                    toast.error("Username or email already exists.");
-                } else if (resp.status === 500) {
-                    toast.error("Internal server error. Please try again later.");
-                } else {
-                    toast.error(errorData.message);
-                }
+      setIsLoading(true);
+    
+      try {
+        const resp = await axiosInstance.post('register/', values);
+    
+        const timeout = setTimeout(() => {
+          handleTimeout();
+        }, 15000); // 15 seconds  
+    
+        if (resp.status === 201) {
+          clearTimeout(timeout);
+          setIsLoading(false);
+          toast.success("Registration is successful, Log in to continue", {
+            onClose: () => {
+              setTimeout(() => {
+                navigate("/login");
+              }, 4000); // Add a 4 second delay
             }
-        } catch (error) {
-            console.error("Network error:", error);
-            toast.error("Network error. Please try again later.");
-        } finally {
-            setIsLoading(false);
+          });
+        } else if (resp.status === 500) {
+          toast.error("Internal server error. Please try again later.");
+        } else {
+          toast.error("Something went wrong");
         }
+      } catch (error) {
+        console.error("Network error:", error);
+    
+        if (error.response && error.response.status === 400) {
+          toast.error("Username or email already exists.");
+        } else {
+          toast.error("Network error. Please try again later.");
+        }
+      } finally {
+        setIsLoading(false);
+      }
     };
-  
+    
     const formSchema = yup.object().shape({
       first_name: yup.string().required('First Name is required'),
       last_name: yup.string().required('Last Name is required'),
@@ -65,7 +63,6 @@ export default function SignUpPage() {
       username: yup.string().required('Username is required'),
       password: yup.string().required('Password is required'),
       phone_number: yup.string().notRequired(),
-      identification: yup.string().notRequired(),
     });
 
     const formik = useFormik({
@@ -76,7 +73,6 @@ export default function SignUpPage() {
           username: '',
           password: '',
           phone_number: '',
-          identification: '',
         },
         validationSchema: formSchema,
         onSubmit: handleFormSubmit, });      
@@ -176,21 +172,7 @@ export default function SignUpPage() {
             <div style={{ color: 'red' }}>{formik.errors.phone_number}</div>
             ) : null}
             <br />
-  
-            {/* Identification */}
-            <label htmlFor="identification">Identification</label>
-            <br />
-            <input
-              id="identification"
-              name="identification"
-              onChange={formik.handleChange}
-              value={formik.values.identification}
-              autoComplete="off"
-            />
-            {formik.errors.identification ? (
-              <div style={{ color: 'red' }}>{formik.errors.identification}</div>
-            ) : null}
-            <br />
+
             <button type="submit">Sign Up</button>
           </form>
           <p>Already have an account? <Link to="/login">Login here</Link></p>
