@@ -19,7 +19,7 @@ export default class NavBar extends Component {
           <img
             className="w-8 h-8 mr-2"
             alt="Delivery Truck"
-            src="user.png" 
+            src="delivery-truck.png" 
           />
           <div className="flex flex-col items-center justify-center space-y-2">
             <div className="font-extrabold text-[#ffd64d] text-sm">
