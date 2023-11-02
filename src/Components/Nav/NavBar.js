@@ -23,7 +23,7 @@ export default class NavBar extends Component {
           />
           <div className="flex flex-col items-center justify-center space-y-2">
             <div className="font-extrabold text-[#ffd64d] text-sm">
-              <h1 to="/" className="text-yellow-500">PARCELPAL.</h1>
+              <NavLink to="/" className="text-yellow-500">PARCELPAL.</NavLink>
             </div>
           </div>
           </div>

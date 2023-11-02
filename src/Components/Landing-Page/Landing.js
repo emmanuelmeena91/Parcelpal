@@ -1,5 +1,7 @@
 import React from 'react';
 import './Landing.css';
+import { NavLink } from "react-router-dom";
+
 
 const Landing = () => {
   return (
@@ -28,7 +30,11 @@ const Landing = () => {
       </div>
       <div className="sendParcelButton">
         <h2>GET STARTED TODAY !</h2>
-        <button>Send Parcel</button>
+        <NavLink to="/signup" className="text-yellow-500">
+        <button>SEND PARCEL</button>
+
+        </NavLink>
+
       </div>
       <div className="customerReviews">
         <div className="review">

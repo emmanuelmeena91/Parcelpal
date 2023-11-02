@@ -12,8 +12,10 @@ const Navbar = () => {
       <div className="navbar-right">
         <Link to="/">Home</Link>
         <Link to="/signup">Signup</Link>
+        <Link to="/about">About Us</Link>
+        <Link to="/contact">Contact Us</Link>
       </div>
-    </nav>
+    </nav> 
   );
 };
 
