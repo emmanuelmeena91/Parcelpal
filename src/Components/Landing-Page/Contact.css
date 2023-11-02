@@ -1,0 +1,77 @@
+/* src/components/Contact.css */
+
+.contact {
+  text-align: center;
+  padding: 50px 0;
+  background-color: #ffdc2b;
+  border-radius: 10px;
+}
+
+.contactForm {
+  max-width: 500px;
+  margin: 0 auto;
+  text-align: left;
+  background-color: #f5f5f5;
+  padding: 30px;
+  border-radius: 10px;
+}
+
+.contactForm h2 {
+  font-size: 1.5em;
+  margin-bottom: 20px;
+}
+
+.contactForm .form-group {
+  margin-bottom: 20px;
+}
+
+.contactForm label {
+  display: block;
+  font-weight: bold;
+}
+
+.contactForm input, .contactForm textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+
+.contactForm button {
+  padding: 10px 20px;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.contactInfo {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+  flex-wrap: wrap;
+}
+
+.contactDetail {
+  max-width: 200px;
+  text-align: center;
+  margin: 20px;
+  background-color: #040411;
+  padding: 5px 20px;
+  border-radius: 10px;
+  max-height: fit-content;
+}
+
+.contactDetail h3 {
+  font-size: 1em;
+  margin-bottom: 10px;
+  color: #f5f5f5;
+}
+
+.contactDetail p {
+  font-size: 1em;
+  line-height: 1.6;
+  margin-bottom: 15px;
+  color: #ffdc2b;
+}
