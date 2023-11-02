@@ -1,18 +1,21 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import NavBar from './Components/Nav/NavBar';
-import { HomePage } from './Pages/HomePage';
-import { ProfilePage } from './Pages/ProfilePage';
-import { SendParcelPage } from './Pages/SendParcelPage';
+import  HomePage  from './Components/User/HomePage';
+import  SendParcel from './Pages/SendParcel';
 import AdminLogInPage from './Pages/AdminLogIn';
 import AdminSignUpPage from './Pages/AdminSignUp';
 import LogInPage from './Pages/LogInPage';
 import SignUpPage from './Pages/SignUpPage';
-import { Details } from './Pages/Details';
+import  DeliveryDetails  from './Components/User/DeliveryDetails';
 import { Tracking } from './Map/Tracking';
-import { Payment } from './Pages/Payment';
+import  Payment  from './Components/User/Payment';
 import UserFooter from './Components/UserFooter';
 import LandingPage from './Components/Landing-Page/HomePage';
+import CarouselWithContent from './Components/User/Carousel';
+import { UserProfile } from "./Components/User/UserProfile";
+
+
 
 export default function App() {
   return (
@@ -20,20 +23,23 @@ export default function App() {
       <>
       <LandingPage />
 
-        {/* <NavBar />  */}
+        <NavBar /> 
+        <CarouselWithContent />
         <Routes> 
+          
+          <Route path="/" element={<HomePage />} />
           <Route index path="/parcel" element={<HomePage />} />
           <Route index path="/home" element={<HomePage />} />
-          <Route path="/sendparcel" element={<SendParcelPage />} />
+          <Route path="/sendparcel" element={<SendParcel />} />
           <Route path="/signup" element={<SignUpPage />} />
           <Route path="/login" element={<LogInPage />} />
           <Route path="/admin-signup" element={<AdminSignUpPage />} />
           <Route path="/admin-login" element={<AdminLogInPage />} />
-          <Route path="/profile" element={<ProfilePage />} />
-          <Route path="/sendparcel" element={<SendParcelPage />} />
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/profile" element={<UserProfile />} />
           <Route path="/tracking" element={<Tracking />} />
           <Route path="/payment" element={<Payment />} />
-          <Route path="/details" element={<Details />} />
+          <Route path="/details" element={<DeliveryDetails />} />
         </Routes>
 
       </>
