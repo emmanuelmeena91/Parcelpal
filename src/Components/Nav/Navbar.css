@@ -2,7 +2,11 @@ nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
+<<<<<<< HEAD:src/Css/Navbar.css
+    background-color: #1C2833;
+=======
     background-color: black;
+>>>>>>> origin/Development:src/Components/Nav/Navbar.css
     padding: 2px 80px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.06);
     height: 64px;
@@ -31,7 +35,11 @@ nav {
 #navbar li a:hover,
 
 #navbar li a.active{
+<<<<<<< HEAD:src/Css/Navbar.css
+    color: #F4D03F;
+=======
     color: yellow;
+>>>>>>> origin/Development:src/Components/Nav/Navbar.css
 }
 
 #navbar li a:hover::after,
@@ -40,7 +48,11 @@ nav {
     content: "";
     width: 30%;
     height: 2px;
+<<<<<<< HEAD:src/Css/Navbar.css
+    background-color: #F4D03F ;
+=======
     background-color: yellow;
+>>>>>>> origin/Development:src/Components/Nav/Navbar.css
     position: absolute;
     bottom: -4px;
     left: 20px;
