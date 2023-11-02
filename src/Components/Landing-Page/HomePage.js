@@ -1,6 +1,5 @@
 import React from 'react';
 import Navbar from './Navbar';
-import Footer from './Footer';
 import Landing from './Landing';
 import About from './About';
 import Contact from './Contact';
@@ -12,7 +11,6 @@ const LandingPage = () => {
       <Landing />
       <About />
       <Contact />
-      <Footer />
     </div>
   );
 };

@@ -6,24 +6,22 @@ import { AboutPage } from './Pages/AboutPage';
 import { ProfilePage } from './Pages/ProfilePage';
 import { SendParcelPage } from './Pages/SendParcelPage';
 import { ContactPage } from './Pages/ContactPage';
-<<<<<<< HEAD
 import AdminLogInPage from './Pages/AdminLogIn';
 import AdminSignUpPage from './Pages/AdminSignUp';
 import LogInPage from './Pages/LogInPage';
 import SignUpPage from './Pages/SignUpPage';
-=======
 import { Details } from './Pages/Details';
 import { Tracking } from './Map/Tracking';
 import { Payment } from './Pages/Payment';
-
-
->>>>>>> origin/Development
+import UserFooter from './Components/UserFooter';
+import LandingPage from './Components/Landing-Page/HomePage';
 
 export default function App() {
   return (
     <Router>
       <>
         <NavBar /> 
+        <LandingPage />
         <Routes> 
           <Route index path="/parcel" element={<HomePage />} />
           <Route index path="/home" element={<HomePage />} />
@@ -39,11 +37,11 @@ export default function App() {
           <Route path="/tracking" element={<Tracking />} />
           <Route path="/payment" element={<Payment />} />
           <Route path="/details" element={<Details />} />
-
-
-
         </Routes>
       </>
+      <UserFooter />
+
     </Router>
+
   );
 }
