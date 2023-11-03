@@ -9,7 +9,7 @@ import axiosInstance from '../axios';
 import GridLoaderSpinner from '../Components/GridLoader';
 
 export default function AdminSignUpPage() {
-    const adminSecretKey = process.env.REACT_APP_ADMIN_SECRET_KEY;
+    const adminSecretKey = '7sXOHoe6RUJTNqNEEyIORR3pBAmoRCUi';
     const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate()
 
@@ -24,6 +24,7 @@ export default function AdminSignUpPage() {
 
       if (special_key !== adminSecretKey) {
         toast.error("Access Denied: Invalid special key");
+        setIsLoading(false)
         return;
       }
     

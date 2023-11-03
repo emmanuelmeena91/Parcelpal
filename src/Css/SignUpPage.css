@@ -52,6 +52,54 @@
     margin-bottom: 20px; 
     background-color: #F4F6F7 ; /* Use a slightly darker shade between white and grey (or cream) */
     border: 1px solid #ccc; 
+
+
+  }
+  
+  
+  .signUpDiv button[type="submit"] {
+    width: 80%;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    background-color: #17cf97;
+    color: #fff;
+    cursor: pointer;
+    margin-top: 20px; 
+  }
+  
+  .signUpDiv h1 {
+    font-size: 2rem; 
+    color: #fff; 
+    padding-left: 30px;
+    color: #17cf97;
+  }
+  
+  .signUpDiv input:focus {
+    outline-color: #0e9c75; 
+  }
+  
+  .signUpDiv button[type="submit"]:hover {
+    background-color: #0e9c75; 
+    padding-left: 15px;
+  }
+  
+  .signUpDiv p a {
+    color: #3498db; 
+  }
+  
+  .signUpDiv p a:hover {
+    text-decoration: underline; 
+  }
+  
+  .error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+  }
+  
+  .error-message:first-child {
+    margin-top: 0;
   }
   
   

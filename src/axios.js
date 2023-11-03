@@ -2,7 +2,7 @@ import axios from "axios";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const baseURL = 'http://127.0.0.1:5555/'
+const baseURL = 'https://parcelpalserver.onrender.com/'
 
 const axiosInstance = axios.create({
     baseURL: baseURL,
