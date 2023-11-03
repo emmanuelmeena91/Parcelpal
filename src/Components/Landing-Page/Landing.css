@@ -1,0 +1,99 @@
+
+
+.landing {
+  background-image: url('./parcel2.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #ffdc2b;
+  text-align: center;
+  padding: 30px 0;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+}
+
+.welcomeText {
+  margin-bottom: 20px;
+  font-size:70px;
+}
+
+.textImage {
+  text-align: center;
+  margin: 20px 0;
+  max-height: 200%;
+}
+
+.textImage h1 {
+  font-size: 2em;
+  font-size:90px;
+}
+.textImage h3,
+.sendParcelButton h2 {
+  background-color: black;
+  display: inline;
+  color: #ffdc2b;
+  padding: 5px 10px;
+}
+
+
+
+
+.achievements {
+  display: flex;
+  justify-content: center;
+  margin-top: 80px;
+}
+
+.achievement {
+  background-color: #ffdc2b;
+  color: #000;
+  padding: 10px 20px;
+  margin: 0 10px;
+  border-radius: 10px;
+}
+
+.sendParcelButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.sendParcelButton h2,
+.sendParcelButton button {
+  background-color: #000;
+  color: #ffdc2b;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1em;
+  transition: background-color 0.3s;
+}
+
+.sendParcelButton button {
+  margin-left: 10px;
+}
+
+.sendParcelButton button:hover {
+  background-color: #333; 
+}
+
+.customerReviews {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 80px;
+}
+
+.review {
+  background-color: #ffdc2b;
+  color: #040411;
+  padding: 10px 20px;
+  margin: 0 10px;
+  max-width: 300px;
+  text-align: center;
+  margin-bottom: 20px;
+  border-radius: 10px;
+}
+
