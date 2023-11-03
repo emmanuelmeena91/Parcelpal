@@ -13,6 +13,8 @@ export default function SignUpPage() {
     const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate()
 
+    const baseURL = 'https://parcelpalserver.onrender.com/'
+
     const handleTimeout = () => {
         setIsLoading(false);
         toast.error("Server did not respond within 15 seconds. Please try again later.");
@@ -20,41 +22,44 @@ export default function SignUpPage() {
 
     const handleFormSubmit = async (values) => {
       setIsLoading(true);
-    
+  
       try {
-        const resp = await axiosInstance.post('register/', values);
-    
-        const timeout = setTimeout(() => {
-          handleTimeout();
-        }, 15000); // 15 seconds  
-    
-        if (resp.status === 201) {
-          clearTimeout(timeout);
-          setIsLoading(false);
-          toast.success("Registration is successful, Log in to continue", {
-            onClose: () => {
-              setTimeout(() => {
-                navigate("/login");
-              }, 4000); // Add a 4 second delay
-            }
+          const response = await fetch(`${baseURL}register/`, {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json',
+              },
+              body: JSON.stringify(values),
           });
-        } else if (resp.status === 500) {
-          toast.error("Internal server error. Please try again later.");
-        } else {
-          toast.error("Something went wrong");
-        }
+  
+          const data = await response.json();
+  
+          const timeout = setTimeout(() => {
+              handleTimeout();
+          }, 15000); // 15 seconds  
+  
+          if (response.ok) {
+              clearTimeout(timeout);
+              setIsLoading(false);
+              toast.success("Registration is successful, Log in to continue", {
+                  onClose: () => {
+                      setTimeout(() => {
+                          navigate("/login");
+                      }, 4000); // Add a 4-second delay
+                  }
+              });
+          } else if (response.status === 500) {
+              toast.error("Internal server error. Please try again later.");
+          } else {
+              toast.error(`Something went wrong: ${data.detail}`);
+          }
       } catch (error) {
-        console.error("Network error:", error);
-    
-        if (error.response && error.response.status === 400) {
-          toast.error("Username or email already exists.");
-        } else {
+          console.error("Network error:", error);
           toast.error("Network error. Please try again later.");
-        }
       } finally {
-        setIsLoading(false);
+          setIsLoading(false);
       }
-    };
+  };
     
     const formSchema = yup.object().shape({
       first_name: yup.string().required('First Name is required'),

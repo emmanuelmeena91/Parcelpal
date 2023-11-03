@@ -14,6 +14,8 @@ export default function LogInPage() {
     const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate()
   
+    const baseURL = 'https://parcelpalserver.onrender.com/'
+
     const handleTogglePassword = () => {
         setShowPassword(!showPassword);
       };
@@ -27,27 +29,23 @@ export default function LogInPage() {
       setIsLoading(true);
   
       try {
-          /*
-          // Commenting out token request
-          const tokenResponse = await axiosInstance.post('api/token/', values);
+          const response = await fetch(`${baseURL}login/`, {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json',
+              },
+              body: JSON.stringify(values),
+          });
   
-          if (tokenResponse.status === 200) {
-              const { access, refresh } = tokenResponse.data;
-              localStorage.setItem('access_token', access);
-              localStorage.setItem('refresh_token', refresh);
-              axiosInstance.defaults.headers['Authorization'] = 'Bearer ' + access;
-          }
-          */
-  
-          const loginResponse = await axiosInstance.post('login/', values);
+          const data = await response.json();
   
           const timeout = setTimeout(() => {
               handleTimeout();
           }, 20000);
   
-          if (loginResponse.status === 200) {
+          if (response.ok) {
               clearTimeout(timeout);
-              const { username, user_id } = loginResponse.data;
+              const { username, user_id } = data;
               localStorage.setItem('username', username);
               localStorage.setItem('user_id', user_id);
   
@@ -58,22 +56,17 @@ export default function LogInPage() {
                   }
               });
           } else {
-              if (loginResponse.status === 400) {
+              if (response.status === 400) {
                   toast.error("Bad request.");
-              } else if (loginResponse.status === 500) {
+              } else if (response.status === 500) {
                   toast.error("Internal server error. Please try again later.");
               } else {
-                  toast.error(loginResponse.data.message);
+                  toast.error(data.message);
               }
           }
       } catch (error) {
-        console.error("Network error:", error);
-    
-        if (error.response && error.response.status === 404) {
-          toast.error("Account not found");
-        } else {
+          console.error("Network error:", error);
           toast.error("Network error. Please try again later.");
-        }
       } finally {
           setIsLoading(false);
       }

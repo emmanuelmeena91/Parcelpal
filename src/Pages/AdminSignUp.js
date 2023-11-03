@@ -12,6 +12,7 @@ export default function AdminSignUpPage() {
     const adminSecretKey = '7sXOHoe6RUJTNqNEEyIORR3pBAmoRCUi';
     const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate()
+    const baseURL = 'https://parcelpalserver.onrender.com/'
 
     const handleTimeout = () => {
         setIsLoading(false);
@@ -21,47 +22,55 @@ export default function AdminSignUpPage() {
     const handleFormSubmit = async (values) => {
       const { special_key, ...rest } = values; 
       setIsLoading(true);
-
+  
       if (special_key !== adminSecretKey) {
-        toast.error("Access Denied: Invalid special key");
-        setIsLoading(false)
-        return;
+          toast.error("Access Denied: Invalid special key");
+          setIsLoading(false)
+          return;
       }
-    
+  
       try {
-        const resp = await axiosInstance.post('adminRegister/', values);
-    
-        const timeout = setTimeout(() => {
-          handleTimeout();
-        }, 15000); 
-    
-        if (resp.status === 201) {
-          clearTimeout(timeout);
-          setIsLoading(false);
-          toast.success("Registration is successful, Log in to continue", {
-            onClose: () => {
-              setTimeout(() => {
-                navigate("/admin-login");
-              }, 4000); 
-            }
+          const response = await fetch(`${baseURL}adminRegister/`, {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json',
+              },
+              body: JSON.stringify(rest), // Sending rest of the values without special_key
           });
-        } else if (resp.status === 500) {
-          toast.error("Internal server error. Please try again later.");
-        } else {
-          toast.error("Something went wrong");
-        }
+  
+          const data = await response.json();
+  
+          const timeout = setTimeout(() => {
+              handleTimeout();
+          }, 15000);
+  
+          if (response.ok) {
+              clearTimeout(timeout);
+              setIsLoading(false);
+              toast.success("Registration is successful, Log in to continue", {
+                  onClose: () => {
+                      setTimeout(() => {
+                          navigate("/admin-login");
+                      }, 4000); 
+                  }
+              });
+          } else if (response.status === 500) {
+              toast.error("Internal server error. Please try again later.");
+          } else {
+              toast.error("Something went wrong");
+          }
       } catch (error) {
-        console.error("Network error:", error);
-    
-        if (error.response && error.response.status === 400) {
-          toast.error("Username or email already exists.");
-        } else {
-          toast.error("Network error. Please try again later.");
-        }
+          console.error("Network error:", error);
+  
+          if (error.response && error.response.status === 400) {
+              toast.error("Username or email already exists.");
+          } else {
+              toast.error("Network error. Please try again later.");
+          }
       } finally {
-        setIsLoading(false);
+          setIsLoading(false);
       }
-    };
+  };
   
     const formSchema = yup.object().shape({
       first_name: yup.string().required('First Name is required'),
