@@ -39,7 +39,7 @@ export default function AdminLogInPage() {
           }
           */
           
-          const resp = await axiosInstance.post('admin-login/', values);
+          const resp = await axiosInstance.post('adminLogin/', values);
   
           const timeout = setTimeout(() => {
               handleTimeout();
@@ -69,8 +69,13 @@ export default function AdminLogInPage() {
               }
           }
       } catch (error) {
-          console.error("Error obtaining tokens:", error);
-          toast.error("Error obtaining tokens. Please try again later.");
+        console.error("Network error:", error);
+    
+        if (error.response && error.response.status === 404) {
+          toast.error("Account not found.");
+        } else {
+          toast.error("Network error. Please try again later.");
+        }
       } finally {
           setIsLoading(false);
       }

@@ -7,9 +7,10 @@ import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axiosInstance from '../axios';
 import GridLoaderSpinner from '../Components/GridLoader';
+import { REACT_APP_ADMIN_SECRET_KEY } from '../../env';
 
 export default function AdminSignUpPage() {
-    const adminSecretKey = process.env.REACT_APP_ADMIN_SECRET_KEY;
+    const adminSecretKey = REACT_APP_ADMIN_SECRET_KEY;
     const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate()
 
@@ -24,6 +25,7 @@ export default function AdminSignUpPage() {
 
       if (special_key !== adminSecretKey) {
         toast.error("Access Denied: Invalid special key");
+        setIsLoading(false)
         return;
       }
     

@@ -67,8 +67,13 @@ export default function LogInPage() {
               }
           }
       } catch (error) {
-          console.error("An error occured:", error);
-          toast.error("Error occured. Please try again later.");
+        console.error("Network error:", error);
+    
+        if (error.response && error.response.status === 404) {
+          toast.error("Account not found");
+        } else {
+          toast.error("Network error. Please try again later.");
+        }
       } finally {
           setIsLoading(false);
       }
