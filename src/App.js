@@ -14,6 +14,11 @@ import UserFooter from './Components/UserFooter';
 import LandingPage from './Components/Landing-Page/HomePage';
 import CarouselWithContent from './Components/User/Carousel';
 import { UserProfile } from "./Components/User/UserProfile";
+import AdminNav from './Pages/AdminNav';
+import { Transaction } from './Pages/Transaction';
+import { AdminHome } from './Pages/AdminHome';
+import { AdminProfile } from './Pages/AdminProfile';
+
 
 
 
@@ -22,8 +27,10 @@ export default function App() {
     <Router>
       <>
       <LandingPage />
-
+        
         <NavBar /> 
+        <AdminNav/>
+        
         <CarouselWithContent />
         <Routes> 
           
@@ -40,6 +47,11 @@ export default function App() {
           <Route path="/tracking" element={<Tracking />} />
           <Route path="/payment" element={<Payment />} />
           <Route path="/details" element={<DeliveryDetails />} />
+          <Route path="/transaction" element={<Transaction />} />
+          <Route path="/adminhome" element={<AdminHome />} />
+          <Route path="/adminprofile" element={<AdminProfile />} />
+
+
         </Routes>
 
       </>
