@@ -13,6 +13,8 @@ export default function AdminLogInPage() {
     const [showPassword, setShowPassword] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate()
+
+    const baseURL = 'https://parcelpalserver.onrender.com/'
   
     const handleTogglePassword = () => {
         setShowPassword(!showPassword);
@@ -27,27 +29,23 @@ export default function AdminLogInPage() {
       setIsLoading(true);
   
       try {
-          /*
-          // Commenting out token request
-          const tokenResponse = await axiosInstance.post('api/token/', values);
+          const response = await fetch(`${baseURL}adminLogin/`, {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json',
+              },
+              body: JSON.stringify(values),
+          });
   
-          if (tokenResponse.status === 200) {
-              const { access, refresh } = tokenResponse.data;
-              localStorage.setItem('access_token', access);
-              localStorage.setItem('refresh_token', refresh);
-              axiosInstance.defaults.headers['Authorization'] = 'Bearer ' + access;
-          }
-          */
-          
-          const resp = await axiosInstance.post('adminLogin/', values);
+          const data = await response.json();
   
           const timeout = setTimeout(() => {
               handleTimeout();
-          }, 20000); 
+          }, 20000);
   
-          if (resp.status === 200) {
-              clearTimeout(timeout); 
-              const { username, admin_id, is_staff } = resp.data;
+          if (response.ok) {
+              clearTimeout(timeout);
+              const { username, admin_id, is_staff } = data;
               localStorage.setItem('username', username);
               localStorage.setItem('admin_id', admin_id);
               localStorage.setItem('is_staff', is_staff);
@@ -59,23 +57,18 @@ export default function AdminLogInPage() {
                   }
               });
           } else {
-              let errorData = resp.data;
-              if (resp.status === 400) {
+              let errorData = data;
+              if (response.status === 400) {
                   toast.error("Bad request.");
-              } else if (resp.status === 500) {
+              } else if (response.status === 500) {
                   toast.error("Internal server error. Please try again later.");
               } else {
                   toast.error(errorData.message);
               }
           }
       } catch (error) {
-        console.error("Network error:", error);
-    
-        if (error.response && error.response.status === 404) {
-          toast.error("Account not found.");
-        } else {
+          console.error("Network error:", error);
           toast.error("Network error. Please try again later.");
-        }
       } finally {
           setIsLoading(false);
       }
