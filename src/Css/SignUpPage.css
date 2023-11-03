@@ -60,7 +60,7 @@
     padding: 10px;
     border: none;
     border-radius: 10px;
-    background-color: #F4D03F ;
+    background-color: #17cf97;
     color: #fff;
     cursor: pointer;
     margin-top: 20px; 
@@ -70,15 +70,16 @@
     font-size: 2rem; 
     color: #fff; 
     padding-left: 30px;
-    color: #9A7D0A  ;
+    color: #17cf97;
   }
   
   .signUpDiv input:focus {
-    outline-color: #B7950B; 
+    outline-color: #0e9c75; 
   }
   
   .signUpDiv button[type="submit"]:hover {
-    background-color: #B7950B; 
+    background-color: #0e9c75; 
+    padding-left: 15px;
   }
   
   .signUpDiv p a {
