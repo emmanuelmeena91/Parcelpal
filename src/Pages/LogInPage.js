@@ -52,7 +52,7 @@ export default function LogInPage() {
               setIsLoading(false);
               toast.success("Login is successful. Redirecting...", {
                   onClose: () => {
-                      navigate("/sendparcel");
+                      navigate("/home");
                   }
               });
           } else {
