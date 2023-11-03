@@ -7,10 +7,9 @@ import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axiosInstance from '../axios';
 import GridLoaderSpinner from '../Components/GridLoader';
-import { REACT_APP_ADMIN_SECRET_KEY } from '../../env';
 
 export default function AdminSignUpPage() {
-    const adminSecretKey = REACT_APP_ADMIN_SECRET_KEY;
+    const adminSecretKey = '7sXOHoe6RUJTNqNEEyIORR3pBAmoRCUi';
     const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate()
 
