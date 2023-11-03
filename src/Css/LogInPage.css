@@ -60,7 +60,7 @@
   padding: 10px;
   border: none;
   border-radius: 10px;
-  background-color: #17cf97;
+  background-color: #F4D03F;
   color: #fff;
   cursor: pointer;
   margin-top: 20px; 
@@ -70,16 +70,16 @@
   font-size: 2rem; 
   color: #fff; 
   padding-left: 30px;
-  color: #17cf97;
+  color: #F4D03F;
 }
 
 .logInDiv input:focus {
-  outline-color: #0e9c75; 
+  outline-color: #9A7D0A; 
 }
 
 .logInDiv button[type="submit"]:hover {
-  background-color: #0e9c75; 
-  padding-left: 15px;
+  background-color: #9A7D0A; 
+  padding-left: 10px;
 }
 
 .logInDiv p a {
@@ -112,3 +112,4 @@
   align-items: center;
   z-index: 9999; 
 }
+
