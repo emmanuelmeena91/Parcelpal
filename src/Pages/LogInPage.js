@@ -24,59 +24,61 @@ export default function LogInPage() {
     };
 
     const handleFormSubmit = async (values) => {
-        setIsLoading(true);
+      setIsLoading(true);
+  
+      try {
+          /*
+          // Commenting out token request
+          const tokenResponse = await axiosInstance.post('api/token/', values);
+  
+          if (tokenResponse.status === 200) {
+              const { access, refresh } = tokenResponse.data;
+              localStorage.setItem('access_token', access);
+              localStorage.setItem('refresh_token', refresh);
+              axiosInstance.defaults.headers['Authorization'] = 'Bearer ' + access;
+          }
+          */
+  
+          const loginResponse = await axiosInstance.post('login/', values);
+  
+          const timeout = setTimeout(() => {
+              handleTimeout();
+          }, 20000);
+  
+          if (loginResponse.status === 200) {
+              clearTimeout(timeout);
+              const { username, user_id } = loginResponse.data;
+              localStorage.setItem('username', username);
+              localStorage.setItem('user_id', user_id);
+  
+              setIsLoading(false);
+              toast.success("Login is successful. Redirecting...", {
+                  onClose: () => {
+                      navigate("/sendparcel");
+                  }
+              });
+          } else {
+              if (loginResponse.status === 400) {
+                  toast.error("Bad request.");
+              } else if (loginResponse.status === 500) {
+                  toast.error("Internal server error. Please try again later.");
+              } else {
+                  toast.error(loginResponse.data.message);
+              }
+          }
+      } catch (error) {
+        console.error("Network error:", error);
     
-        try {
-            const tokenResponse = await axiosInstance.post('api/token/', values);
-    
-            if (tokenResponse.status === 200) {
-                const { access, refresh } = tokenResponse.data;
-                localStorage.setItem('access_token', access);
-                localStorage.setItem('refresh_token', refresh);
-                axiosInstance.defaults.headers['Authorization'] = 'Bearer ' + access;
-                
-                const loginResponse = await axiosInstance.post('login/', values);
-
-                const timeout = setTimeout(() => {
-                    handleTimeout();
-                }, 20000); 
-    
-                if (loginResponse.status === 200) {
-                    clearTimeout(timeout); 
-                    const responseData = await loginResponse.json();
-                    const { username, user_id } = responseData;
-                    localStorage.setItem('username', username);
-                    localStorage.setItem('user_id', user_id);
-    
-                    setIsLoading(false);
-                    toast.success("Login is successful. Redirecting...", {
-                        onClose: () => {
-                            navigate("/parcel");
-                        }
-                    });
-                } else {
-                    let errorData = await loginResponse.json();
-                    if (loginResponse.status === 400) {
-                        toast.error("Bad request.");
-                    } else if (loginResponse.status === 500) {
-                        toast.error("Internal server error. Please try again later.");
-                    } else {
-                        toast.error(errorData.message);
-                    }
-                }
-            } else {
-                toast.error("Unexpected response when obtaining tokens.");
-            }
-        } catch (error) {
-            console.error("Error obtaining tokens:", error);
-            toast.error("Error obtaining tokens. Please try again later.");
-        } finally {
-            setIsLoading(false);
+        if (error.response && error.response.status === 404) {
+          toast.error("Account not found");
+        } else {
+          toast.error("Network error. Please try again later.");
         }
-    };
-    
-
-    
+      } finally {
+          setIsLoading(false);
+      }
+  };
+  
     const formSchema = yup.object().shape({
       email: yup.string().email('Invalid email').required('Email is required'),
       password: yup.string().required('Password is required'),

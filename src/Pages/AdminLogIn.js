@@ -24,60 +24,63 @@ export default function AdminLogInPage() {
     };
 
     const handleFormSubmit = async (values) => {
-        setIsLoading(true);
+      setIsLoading(true);
+  
+      try {
+          /*
+          // Commenting out token request
+          const tokenResponse = await axiosInstance.post('api/token/', values);
+  
+          if (tokenResponse.status === 200) {
+              const { access, refresh } = tokenResponse.data;
+              localStorage.setItem('access_token', access);
+              localStorage.setItem('refresh_token', refresh);
+              axiosInstance.defaults.headers['Authorization'] = 'Bearer ' + access;
+          }
+          */
+          
+          const resp = await axiosInstance.post('adminLogin/', values);
+  
+          const timeout = setTimeout(() => {
+              handleTimeout();
+          }, 20000); 
+  
+          if (resp.status === 200) {
+              clearTimeout(timeout); 
+              const { username, admin_id, is_staff } = resp.data;
+              localStorage.setItem('username', username);
+              localStorage.setItem('admin_id', admin_id);
+              localStorage.setItem('is_staff', is_staff);
+  
+              setIsLoading(false);
+              toast.success("Login is successful. Redirecting...", {
+                  onClose: () => {
+                      navigate("/sendparcel");
+                  }
+              });
+          } else {
+              let errorData = resp.data;
+              if (resp.status === 400) {
+                  toast.error("Bad request.");
+              } else if (resp.status === 500) {
+                  toast.error("Internal server error. Please try again later.");
+              } else {
+                  toast.error(errorData.message);
+              }
+          }
+      } catch (error) {
+        console.error("Network error:", error);
     
-        try {
-            const tokenResponse = await axiosInstance.post('api/token/', values);
-    
-            if (tokenResponse.status === 200) {
-                const { access, refresh } = tokenResponse.data;
-                localStorage.setItem('access_token', access);
-                localStorage.setItem('refresh_token', refresh);
-                axiosInstance.defaults.headers['Authorization'] = 'Bearer ' + access;
-                
-                const resp = await axiosInstance.post('admin-login/', values);
-    
-                const timeout = setTimeout(() => {
-                    handleTimeout();
-                }, 20000); 
-    
-                if (resp.status === 200) {
-                    clearTimeout(timeout); 
-                    const responseData = await resp.json();
-                    const { username, admin_id, is_staff } = responseData;
-                    localStorage.setItem('username', username);
-                    localStorage.setItem('admin_id', admin_id);
-                    localStorage.setItem('is_staff', is_staff);
-    
-                    setIsLoading(false);
-                    toast.success("Login is successful. Redirecting...", {
-                        onClose: () => {
-                            navigate("/parcel");
-                        }
-                    });
-                } else {
-                    let errorData = await resp.json();
-                    if (resp.status === 400) {
-                        toast.error("Bad request.");
-                    } else if (resp.status === 500) {
-                        toast.error("Internal server error. Please try again later.");
-                    } else {
-                        toast.error(errorData.message);
-                    }
-                }
-            } else {
-                toast.error("Unexpected response when obtaining tokens.");
-            }
-        } catch (error) {
-            console.error("Error obtaining tokens:", error);
-            toast.error("Error obtaining tokens. Please try again later.");
-        } finally {
-            setIsLoading(false);
+        if (error.response && error.response.status === 404) {
+          toast.error("Account not found.");
+        } else {
+          toast.error("Network error. Please try again later.");
         }
-    };
-    
-
-    
+      } finally {
+          setIsLoading(false);
+      }
+  };
+        
     const formSchema = yup.object().shape({
       email: yup.string().email('Invalid email').required('Email is required'),
       password: yup.string().required('Password is required'),
