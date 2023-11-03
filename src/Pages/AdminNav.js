@@ -1,9 +1,9 @@
 import { Component } from 'react';
 import { NavLink } from "react-router-dom";
-import './Navbar.css'
+import '../Components/Nav/Navbar.css'
 
 
-export default class NavBar extends Component {
+export default class AdminNav extends Component {
 
   state = { clicked: false }; 
 
@@ -25,18 +25,17 @@ export default class NavBar extends Component {
             <div className="font-extrabold text-[#ffd64d] text-sm">
               <NavLink to="/" className="text-yellow-500">PARCELPAL.</NavLink>
             </div>
-          </div>
+          </div>  
           </div>
           </div>
         <div>
           <ul id='navbar' className={this.state.clicked ? 'navbar active' : 'navbar'}>
-            <li><NavLink exact to="/" >Home</NavLink></li>
-            <li><NavLink to="/sendparcel">Send Parcel</NavLink></li>
+            <li><NavLink exact to="/adminhome" >Home</NavLink></li>
+            <li><NavLink to="/transaction">Transaction</NavLink></li>
             <li><NavLink to="/tracking" >Tracking</NavLink></li>
-            <li><NavLink to="/payment">Payment</NavLink></li>
-            <li><NavLink to="/details">Details </NavLink></li>
+            <li><NavLink to="/details">Delivery Details </NavLink></li>
 
-            <li><NavLink to="/profile"><i className="fa-regular fa-user"></i></NavLink></li>
+            <li><NavLink to="/adminprofile"><i className="fa-regular fa-user"></i></NavLink></li>
           </ul>
         </div>
         <div id='mobile' onClick={this.handleClick}>

@@ -1,0 +1,64 @@
+/* src/components/About.css */
+
+.about {
+  text-align: center;
+  padding: 50px 0;
+  margin-bottom: 10px;
+  background-color: #ffdc2b;
+  border-radius: 10px;
+}
+
+.aboutText {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.aboutText h2 {
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+.aboutText h3 {
+  font-size: 1.5em;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.aboutText p {
+  font-size: 1em;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.aboutText ul {
+  text-align: left;
+  margin-bottom: 20px;
+  padding-left: 20px;
+}
+
+.aboutText li {
+  font-size: 1em;
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+
+.aboutImage img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.achievements {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.achievement {
+  background-color: #f5f5f5;
+  color: #000;
+  padding: 10px 20px;
+  margin: 0 10px;
+}
+
