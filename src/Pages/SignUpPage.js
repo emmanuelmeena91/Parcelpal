@@ -5,7 +5,7 @@ import { useFormik } from "formik";
 import { useNavigate, Link } from "react-router-dom"
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import axiosInstance from '../axios';
+// import axiosInstance from '../axios';
 import GridLoaderSpinner from '../Components/GridLoader';
 
 export default function SignUpPage() {
