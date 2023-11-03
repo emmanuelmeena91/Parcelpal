@@ -25,7 +25,7 @@ export default class AdminNav extends Component {
             <div className="font-extrabold text-[#ffd64d] text-sm">
               <NavLink to="/" className="text-yellow-500">PARCELPAL.</NavLink>
             </div>
-          </div>
+          </div>  
           </div>
           </div>
         <div>
