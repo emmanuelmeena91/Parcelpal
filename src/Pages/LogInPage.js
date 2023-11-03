@@ -6,7 +6,7 @@ import { useNavigate, Link } from "react-router-dom"
 import GridLoaderSpinner from '../Components/GridLoader';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import axiosInstance from '../axios';
+// import axiosInstance from '../axios';
 
 export default function LogInPage() {
 
@@ -52,7 +52,7 @@ export default function LogInPage() {
               setIsLoading(false);
               toast.success("Login is successful. Redirecting...", {
                   onClose: () => {
-                      navigate("/sendparcel");
+                      navigate("/home");
                   }
               });
           } else {
