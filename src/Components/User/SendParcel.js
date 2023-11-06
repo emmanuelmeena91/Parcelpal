@@ -28,7 +28,9 @@ const SendParcel = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto p-6 bg-yellow-300 rounded-lg shadow-md">
+    
+    <div
+     className="max-w-md mx-auto p-6 bg-yellow-300 rounded-lg shadow-md">
       <h1 className="text-3xl font-semibold text-center mb-6 text-black">
         SendParcel
       </h1>

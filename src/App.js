@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import NavBar from './Components/Nav/NavBar';
 import  HomePage  from './Components/User/HomePage';
 import  SendParcel from './Pages/SendParcel';
 import AdminLogInPage from './Pages/AdminLogIn';
@@ -10,13 +11,14 @@ import  DeliveryDetails  from './Components/User/DeliveryDetails';
 import { Tracking } from './Map/Tracking';
 import  Payment  from './Components/User/Payment';
 import UserFooter from './Components/UserFooter';
-import LandingPage from './Components/Landing-Page/HomePage';
+import LandingPage from './Components/Landing-Page/Home';
+import CarouselWithContent from './Components/User/Carousel';
 import { UserProfile } from "./Components/User/UserProfile";
 import AdminNav from './Pages/AdminNav';
 import { Transaction } from './Pages/Transaction';
 import { AdminHome } from './Pages/AdminHome';
 import { AdminProfile } from './Pages/AdminProfile';
-import CarouselWithContent from './Components/User/Carousel';
+
   
 
 
@@ -25,21 +27,21 @@ export default function App() {
     <Router>
       <>
       <LandingPage />
-        {/* <CarouselWithContent/> */}
-     
+        
+        <NavBar /> 
         {/* <AdminNav/> */}
         
-       
         <Routes> 
           
+          <Route path="/" element={<HomePage />} />
           <Route index path="/parcel" element={<HomePage />} />
-          <Route index path="/home" element={<HomePage />} />
+          <Route index path="/" element={<HomePage />} />
           <Route path="/sendparcel" element={<SendParcel />} />
           <Route path="/signup" element={<SignUpPage />} />
           <Route path="/login" element={<LogInPage />} />
           <Route path="/admin-signup" element={<AdminSignUpPage />} />
           <Route path="/admin-login" element={<AdminLogInPage />} />
-          {/* <Route path="/" element={<LandingPage />} /> */}
+          <Route path="/" element={<LandingPage />} />
           <Route path="/profile" element={<UserProfile />} />
           <Route path="/tracking" element={<Tracking />} />
           <Route path="/payment" element={<Payment />} />
@@ -47,8 +49,6 @@ export default function App() {
           <Route path="/transaction" element={<Transaction />} />
           <Route path="/adminhome" element={<AdminHome />} />
           <Route path="/adminprofile" element={<AdminProfile />} />
-          <Route index path="/home" element={<CarouselWithContent/>} />
-          <Route index path="/adminhome" element={<CarouselWithContent/>} />
 
 
         </Routes>

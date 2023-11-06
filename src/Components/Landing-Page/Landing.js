@@ -30,7 +30,7 @@ const Landing = () => {
       </div>
       <div className="sendParcelButton">
         <h2>GET STARTED TODAY !</h2>
-        <NavLink to="/signup" className="text-yellow-500">
+        <NavLink to="/SignUp" className="text-yellow-500">
         <button>SEND PARCEL</button>
 
         </NavLink>

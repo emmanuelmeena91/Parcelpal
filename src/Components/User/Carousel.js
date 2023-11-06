@@ -3,6 +3,7 @@ import Swiper from 'swiper/bundle';
 import 'swiper/swiper-bundle.css';
 import { useLocation } from 'react-router-dom';
 
+
 function CarouselWithContent() {
   const location = useLocation();
   const swiperRef = useRef(null); // Create a ref for the Swiper instance

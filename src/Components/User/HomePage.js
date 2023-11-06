@@ -1,12 +1,10 @@
 import React from "react";
-import NavBar from "../Nav/NavBar";
-// import CarouselWithContent from "./Carousel";
+import CarouselWithContent from './Carousel';
 
 const HomePage = () => {
   return (
     <div>
-        <NavBar /> 
-        {/* <CarouselWithContent />   */}
+        <CarouselWithContent />  
   
   
     <div className="bg-gray-300 min-h-screen">

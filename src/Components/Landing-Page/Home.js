@@ -8,11 +8,11 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 const LandingPage = () => {
   return (
     <div>
-      {/* <Navbar /> */}
+      <Navbar />
 
 <Routes> 
 
-         <Route index path="/" element={<Landing />} />
+         <Route index path="/landing" element={<Landing />} />
           <Route index path="/about" element={<About />} />
           <Route index path="/contact" element={<Contact />} />
       

@@ -33,7 +33,7 @@ export const UserProfile = () => {
         toast.dismiss(toastId);
 
         // Navigate to the 'LandingPage' component
-        navigate('/'); // This should take you to the LandingPage
+        navigate('/landing'); // This should take you to the LandingPage
       }, 2000); // 2-second delay
     }
   }, [isLoading, navigate]);
