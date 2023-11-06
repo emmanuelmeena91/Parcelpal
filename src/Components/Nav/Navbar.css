@@ -2,7 +2,7 @@ nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: black;
+    background-color: #1C2833; /* or use 'black' if you prefer */
     padding: 2px 80px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.06);
     height: 64px;
@@ -29,18 +29,16 @@ nav {
 }
 
 #navbar li a:hover,
-
 #navbar li a.active{
-    color: yellow;
+    color: #F4D03F; /* or use 'yellow' if you prefer */
 }
 
 #navbar li a:hover::after,
-
 #navbar li a.active::after{
     content: "";
     width: 30%;
     height: 2px;
-    background-color: yellow;
+    background-color: #F4D03F; /* or use 'yellow' if you prefer */
     position: absolute;
     bottom: -4px;
     left: 20px;
@@ -52,46 +50,44 @@ nav {
 
 #mobile i {
     color: #fff;
-
 }
 
 #navbar.active {
     margin: 0;
     padding: 0;
-  }
+}
 
 @media screen and (max-width:769px){
+    #navbar {
+        display: flex;
+        flex-direction: column;
+        align-self: flex-start;
+        justify-content: flex-start;
+        position: fixed;
+        top: 64px;
+        right: 0px;
+        width: 300px;
+        height: 100vh;
+        background-color: #2a3239;
+        box-shadow: 0 40px 60px rgba(0,0,0,0.1);
+        padding: 40px 0 0 10px;
+        transition: 0.5s ease-in-out;
+    }
 
-#navbar {
-    display: flex;
-    flex-direction: column;
-    align-self: flex-start;
-    justify-content: flex-start;
-    position: fixed;
-    top: 64px;
-    right: 0px;
-    width: 300px;
-    height: 100vh;
-    background-color: #2a3239;
-    box-shadow: 0 40px 60px rgba(0,0,0,0.1);
-    padding: 40px 0 0 10px;
-    transition: 0.5s ease-in-out;
-}
+    #navbar.active {
+        right: -300px;
+    }
 
-#navbar.active {
-    right: -300px;
-}
+    #navbar li {
+        margin-bottom: 25px;
+    }
 
-#navbar li {
-    margin-bottom: 25px;
-}
+    #mobile {
+        display: block; 
+    }
 
-#mobile {
-    display: block; 
-}
-
-#mobile i {
-    font-size: 24px;
-    cursor: pointer;
-}
+    #mobile i {
+        font-size: 24px;
+        cursor: pointer;
+    }
 }
