@@ -1,10 +1,8 @@
 import React from "react";
-import CarouselWithContent from './Carousel';
 
 const HomePage = () => {
   return (
     <div>
-        <CarouselWithContent />  
   
   
     <div className="bg-gray-300 min-h-screen">
