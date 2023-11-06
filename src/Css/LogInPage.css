@@ -60,7 +60,7 @@
   padding: 10px;
   border: none;
   border-radius: 10px;
-  background-color: #17cf97;
+  background-color: #B7950B;
   color: #fff;
   cursor: pointer;
   margin-top: 20px; 
@@ -70,15 +70,15 @@
   font-size: 2rem; 
   color: #fff; 
   padding-left: 30px;
-  color: #17cf97;
+  color: #B7950B;
 }
 
 .logInDiv input:focus {
-  outline-color: #0e9c75; 
+  outline-color: #B7950B; 
 }
 
 .logInDiv button[type="submit"]:hover {
-  background-color: #0e9c75; 
+  background-color: #796208; 
   padding-left: 15px;
 }
 

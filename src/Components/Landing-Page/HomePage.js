@@ -8,7 +8,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 const LandingPage = () => {
   return (
     <div>
-      <Navbar />
+      {/* <Navbar /> */}
 
 <Routes> 
 

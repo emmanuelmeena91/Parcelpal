@@ -17,7 +17,6 @@ import { Transaction } from './Pages/Transaction';
 import { AdminHome } from './Pages/AdminHome';
 import { AdminProfile } from './Pages/AdminProfile';
 import CarouselWithContent from './Components/User/Carousel';
-
   
 
 
@@ -26,7 +25,7 @@ export default function App() {
     <Router>
       <>
       <LandingPage />
-        <CarouselWithContent/>
+        {/* <CarouselWithContent/> */}
      
         {/* <AdminNav/> */}
         
@@ -49,7 +48,7 @@ export default function App() {
           <Route path="/adminhome" element={<AdminHome />} />
           <Route path="/adminprofile" element={<AdminProfile />} />
           <Route index path="/home" element={<CarouselWithContent/>} />
-
+          <Route index path="/adminhome" element={<CarouselWithContent/>} />
 
 
         </Routes>

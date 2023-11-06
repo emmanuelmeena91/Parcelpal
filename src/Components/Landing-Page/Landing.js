@@ -21,7 +21,7 @@ const Landing = () => {
         </div>
         <div className="achievement">
           <h3>5,000+</h3>
-          <p>Satisfied Customers</p>
+          <p>Satisfied Customers.</p>
         </div>
         <div className="achievement">
           <h3>24/7</h3>
