@@ -1,24 +1,20 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import NavBar from './Components/Nav/NavBar';
-import  HomePage  from './Components/User/HomePage';
-import  SendParcel from './Pages/SendParcel';
-import AdminLogInPage from './Pages/AdminLogIn';
-import AdminSignUpPage from './Pages/AdminSignUp';
+// // import NavBar from './Components/Nav/NavBar';
+
+// import AdminLogInPage from './Pages/AdminLogIn';
+// import AdminSignUpPage from './Pages/AdminSignUp';
 import LogInPage from './Pages/LogInPage';
 import SignUpPage from './Pages/SignUpPage';
-import  DeliveryDetails  from './Components/User/DeliveryDetails';
-import { Tracking } from './Map/Tracking';
-import  Payment  from './Components/User/Payment';
+// import { Tracking } from './Map/Tracking';
 import UserFooter from './Components/UserFooter';
-import LandingPage from './Components/Landing-Page/Home';
-import CarouselWithContent from './Components/User/Carousel';
-import { UserProfile } from "./Components/User/UserProfile";
-import AdminNav from './Pages/AdminNav';
-import { Transaction } from './Pages/Transaction';
-import { AdminHome } from './Pages/AdminHome';
-import { AdminProfile } from './Pages/AdminProfile';
-
+// import LandingPage from './Components/Landing-Page/Home';
+// import AdminNav from './Pages/AdminNav';
+// import { Transaction } from './Pages/Transaction';
+// import { AdminHome } from './Pages/AdminHome';
+// import { AdminProfile } from './Pages/AdminProfile';
+import AppRouter from './Components/User/AppRouter';
+import Home from './Components/Landing-Page/Home';
   
 
 
@@ -26,38 +22,36 @@ export default function App() {
   return (
     <Router>
       <>
-      <LandingPage />
-        
-        <NavBar /> 
-        {/* <AdminNav/> */}
-        
-        <Routes> 
+      <Home />
+
+     < AppRouter/>
           
-          <Route path="/" element={<HomePage />} />
-          <Route index path="/parcel" element={<HomePage />} />
-          <Route index path="/" element={<HomePage />} />
-          <Route path="/sendparcel" element={<SendParcel />} />
+        <Routes> 
           <Route path="/signup" element={<SignUpPage />} />
           <Route path="/login" element={<LogInPage />} />
-          <Route path="/admin-signup" element={<AdminSignUpPage />} />
-          <Route path="/admin-login" element={<AdminLogInPage />} />
-          <Route path="/" element={<LandingPage />} />
-          <Route path="/profile" element={<UserProfile />} />
-          <Route path="/tracking" element={<Tracking />} />
-          <Route path="/payment" element={<Payment />} />
-          <Route path="/details" element={<DeliveryDetails />} />
-          <Route path="/transaction" element={<Transaction />} />
+          {/* <Route path="/admin-signup" element={<AdminSignUpPage />} /> */}
+          {/* <Route path="/admin-login" element={<AdminLogInPage />} /> */}
+          {/* <Route path="/" element={<LandingPage />} />      
+        <Route path="/transaction" element={<Transaction />} />
           <Route path="/adminhome" element={<AdminHome />} />
-          <Route path="/adminprofile" element={<AdminProfile />} />
+          <Route path="/adminprofile" element={<AdminProfile />} /> */}
+        
+        {/* <NavBar />  */}
+        {/* <AdminNav/> */}
+
+        
+
 
 
         </Routes>
+        <UserFooter />
+
 
       </>
 
-      <UserFooter />
 
     </Router>
+
 
   );
 }
