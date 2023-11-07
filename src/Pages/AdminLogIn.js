@@ -7,7 +7,7 @@ import GridLoaderSpinner from '../Components/GridLoader';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-export default function AdminLogInPage() {
+export default function AdminLoginPage() {
 
     const [showPassword, setShowPassword] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
@@ -52,7 +52,7 @@ export default function AdminLogInPage() {
               setIsLoading(false);
               toast.success("Login is successful. Redirecting...", {
                   onClose: () => {
-                      navigate("/sendparcel");
+                      navigate("/AdminDashboard");
                   }
               });
           } else {

@@ -7,8 +7,7 @@ import AppRouter from './Components/User/AppRouter';
 import Home from './Components/Landing-Page/Home';
 import AdminDashboard from './Components/Admin/AdminDashboard';
 import AdminSignUpPage from './Pages/AdminSignUp';
-import HomePage from './Components/User/HomePage';
-
+import AdminLoginPage from './Pages/AdminLogIn';
 
 export default function App() {
   return (
@@ -20,8 +19,9 @@ export default function App() {
         <Route path="/admindashboard" element={<AdminDashboard />} />
           <Route path="/signup" element={<SignUpPage />} />
           <Route path="/login" element={<LogInPage />} />
-          <Route path="/adminsignup" element={<AdminSignUpPage />} />
-          <Route path="/Parcelpal" element={<HomePage />} />
+          <Route path="/adminsignup"HomePage element={<AdminSignUpPage />} />
+          <Route path="/adminlogin"HomePage element={<AdminLoginPage />} />
+          
 
 
         </Routes>

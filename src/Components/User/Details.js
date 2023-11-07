@@ -22,10 +22,10 @@ const Details = () => {
           <nav>
             <ul className="flex space-x-4">
               <li>
-                <a href="dashboard.html">Dashboard</a>
+                <a href="dashboard">Dashboard</a>
               </li>
               <li>
-                <a className="current" href="parcel.html">
+                <a className="current" href="SendParcel">
                   Parcel
                 </a>
               </li>

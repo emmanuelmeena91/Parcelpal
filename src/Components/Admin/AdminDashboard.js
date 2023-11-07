@@ -28,12 +28,12 @@ const AdminDashboard = () => {
           <nav>
             <ul className="flex space-x-6">
               <li>
-                <a className="hover:text-yellow-500" href="admin_dashboard.html">
+                <a className="hover:text-yellow-500" href="AdminDashboard">
                   Admin
                 </a>
               </li>
               <li>
-                <a className="hover:text-yellow-500" href="dashboard.html">
+                <a className="hover:text-yellow-500" href="Dashboard">
                   User
                 </a>
               </li>

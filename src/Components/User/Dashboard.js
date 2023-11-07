@@ -23,10 +23,10 @@ const Dashboard = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/parcel">Parcel</Link>
+                <Link to="/SendParcel">Parcel</Link>
               </li>
               <li>
-                <Link to="/admin_dashboard">Admin</Link>
+                <Link to="/AdminDashboard">Admin</Link>
               </li>
             </ul>
           </nav>
