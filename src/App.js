@@ -7,6 +7,7 @@ import AppRouter from './Components/User/AppRouter';
 import Home from './Components/Landing-Page/Home';
 import AdminDashboard from './Components/Admin/AdminDashboard';
 import AdminSignUpPage from './Pages/AdminSignUp';
+import HomePage from './Components/User/HomePage';
 
 
 export default function App() {
@@ -20,6 +21,7 @@ export default function App() {
           <Route path="/signup" element={<SignUpPage />} />
           <Route path="/login" element={<LogInPage />} />
           <Route path="/adminsignup" element={<AdminSignUpPage />} />
+          <Route path="/Parcelpal" element={<HomePage />} />
 
 
         </Routes>

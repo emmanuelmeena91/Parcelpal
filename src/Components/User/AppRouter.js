@@ -14,7 +14,7 @@ const AppRouter = () => {
   return (
     <div>
       <NavBar />
-      <CarouselWithContent />
+      {/* <CarouselWithContent /> */}
       <main>
         <Routes>
           <Route path="/" element={<HomePage />} />
