@@ -7,8 +7,8 @@ const AdminDashboard = () => {
     three: "Processing",
     four: "Delivered",
     five: "Declined",
-    six: "Processing", // Added this entry for the new parcel
-    seven: "Canceled", // Added this entry for the new parcel
+    six: "Processing",
+    seven: "Canceled",
   });
 
   const getStatus = (id, event) => {
@@ -57,25 +57,25 @@ const AdminDashboard = () => {
             </div>
             <div className="bg-white p-4 text-center">
               <p className="text-gray-600">Delivered Parcels</p>
-              <h1 className="text-2xl text-blue-500 font-bold">3594</h1>
+              <h1 className="text-2xl text-green-500 font-bold">3594</h1>
             </div>
             <div className="bg-white p-4 text-center">
               <p className="text-gray-600">All Parcels</p>
-              <h1 className="text-2xl text-blue-500 font-bold">4453</h1>
+              <h1 className="text-2xl text-yellow-500 font-bold">4453</h1>
             </div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">
             <div className="bg-white p-4 text-center">
               <p className="text-gray-600">All Users</p>
-              <h1 className="text-2xl text-blue-500 font-bold">50</h1>
+              <h1 className="text-2xl text-red-500 font-bold">50</h1>
             </div>
             <div className="bg-white p-4 text-center">
               <p className="text-gray-600">Available Transit</p>
-              <h1 className="text-2xl text-blue-500 font-bold">5</h1>
+              <h1 className="text-2xl text-purple-500 font-bold">5</h1>
             </div>
             <div className="bg-white p-4 text-center">
               <p className="text-gray-600">Declined Parcels</p>
-              <h1 className="text-2xl text-blue-500 font-bold">10</h1>
+              <h1 className="text-2xl text-pink-500 font-bold">10</h1>
             </div>
           </div>
         </div>
@@ -85,9 +85,9 @@ const AdminDashboard = () => {
         <div className="container mx-auto">
           <h2 className="text-2xl font-bold mb-4">All Packages</h2>
           <div className="w-full overflow-x-auto">
-            <table className="w-full border-collapse border border-gray-500">
+            <table className="w-full mx-auto border-collapse border border-gray-500 max-w-5xl">
               <thead>
-                <tr className=" bg-yellow-500 ">
+                <tr className="bg-yellow-500">
                   <th className="py-2 px-4 font-semibold">Parcel</th>
                   <th className="py-2 px-4 font-semibold">Weight(kg)</th>
                   <th className="py-2 px-4 font-semibold">Location</th>
@@ -103,11 +103,14 @@ const AdminDashboard = () => {
                   <td>Phones</td>
                   <td>50kg</td>
                   <td>Yaba</td>
-                  <td>Ikeja</td>
-                  <td id="one">{parcelStatus.one}</td>
                   <td>
+                    <span className={parcelStatus.one === "Delivered" ? "text-green-600 font-bold" : (parcelStatus.one === "Processing" ? "text-yellow-600 font-bold" : "text-red-600 font-bold")}>
+                      {parcelStatus.one}
+                    </span>
+                  </td>
+                  <td id="one">
                     <a href="">
-                      <button className="bg-orange-500 text-white py-1 px-3  hover:bg-yellow-500">
+                      <button className="bg-gray-400 text-white py-1 px-3 hover:bg-yellow-500">
                         Change
                       </button>
                     </a>
@@ -130,11 +133,14 @@ const AdminDashboard = () => {
                   <td>Tablet</td>
                   <td>30kg</td>
                   <td>Lagos</td>
-                  <td>Abuja</td>
-                  <td id="six">{parcelStatus.six}</td>
                   <td>
+                    <span className={parcelStatus.six === "Delivered" ? "text-green-600 font-bold" : (parcelStatus.six === "Processing" ? "text-yellow-600 font-bold" : "text-red-600 font-bold")}>
+                      {parcelStatus.six}
+                    </span>
+                  </td>
+                  <td id="six">
                     <a href="">
-                      <button className="bg-blue-500 text-white py-1 px-3 hover:bg-yellow-500">
+                      <button className="bg-gray-400 text-white py-1 px-3 hover-bg-yellow-500">
                         Change
                       </button>
                     </a>
@@ -157,11 +163,14 @@ const AdminDashboard = () => {
                   <td>Laptops</td>
                   <td>5kg</td>
                   <td>Ikeja</td>
-                  <td>Lekki</td>
-                  <td id="seven">{parcelStatus.seven}</td>
                   <td>
+                    <span className={parcelStatus.seven === "Delivered" ? "text-green-600 font-bold" : (parcelStatus.seven === "Processing" ? "text-yellow-600 font-bold" : "text-red-600 font-bold")}>
+                      {parcelStatus.seven}
+                    </span>
+                  </td>
+                  <td id="seven">
                     <a href="">
-                      <button className="bg-blue-500 text-white py-1 px-3  hover:bg-yellow-500">
+                      <button className="bg-gray-400 text-white py-1 px-3 hover-bg-yellow-500">
                         Change
                       </button>
                     </a>

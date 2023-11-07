@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 import React, { useState } from "react";
+=======
+
+import React from "react";
+>>>>>>> 5bb0bfd2b34ab1afde883a89595e29846a5403d5
 import { Link } from "react-router-dom";
 import SendParcel from "./SendParcel"; // Import the SendParcel component
 
