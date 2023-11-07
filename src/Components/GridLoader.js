@@ -10,7 +10,7 @@ export default function GridLoaderSpinner() {
             loading
             margin={6}
             size={100}
-            speedMultiplier={1.2}
+            speedMultiplier={1.1}
             width={6}
             />        
         </div>
