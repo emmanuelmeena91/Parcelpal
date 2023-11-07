@@ -5,12 +5,12 @@ export default function GridLoaderSpinner() {
       <>
         <div style={{ width: "100px", margin: "auto", paddingTop: "8rem", display: "block" }}>
         <GridLoader
-            color="#36d7b7"
+            color="#9A7D0A"
             cssOverride={{}}
             loading
             margin={6}
             size={100}
-            speedMultiplier={1.2}
+            speedMultiplier={1.1}
             width={6}
             />        
         </div>

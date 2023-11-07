@@ -1,125 +1,111 @@
 import React, { useState } from "react";
 
 const SendParcel = () => {
-  const [receiverName, setReceiverName] = useState("");
-  const [phoneNo, setPhoneNo] = useState("");
+  const [parcelName, setParcelName] = useState("");
   const [weight, setWeight] = useState("");
-  const [pickup, setPickup] = useState("");
+  const [location, setLocation] = useState("");
   const [destination, setDestination] = useState("");
-  const [totalCost, setTotalCost] = useState(0);
 
-  const handleWeightChange = (e) => {
-    const enteredWeight = e.target.value;
-    const rate = 200;
-
-    if (!enteredWeight || isNaN(enteredWeight)) {
-      setWeight("");
-      setTotalCost(0);
-    } else {
-      const calculatedCost = parseFloat(enteredWeight) * rate;
-      setWeight(enteredWeight);
-      setTotalCost(calculatedCost);
-    }
-  };
-
-  const handleSubmit = (e) => {
+  const handleFormSubmit = (e) => {
     e.preventDefault();
+    // You can handle form submission logic here
     console.log("Form submitted");
   };
 
   return (
-    
-    <div
-     className="max-w-md mx-auto p-6 bg-yellow-300 rounded-lg shadow-md">
-      <h1 className="text-3xl font-semibold text-center mb-6 text-black">
-        SendParcel
-      </h1>
-      <form onSubmit={handleSubmit}>
-        <div className="mb-4">
-          <label htmlFor="receiverName" className="block font-medium text-black mb-2 text-lg">
-            Receiver Name
-          </label>
-          <input
-            type="text"
-            id="receiverName"
-            placeholder="Receiver's name"
-            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-green-500 text-lg"
-            value={receiverName}
-            onChange={(e) => setReceiverName(e.target.value)}
-          />
+    <div>
+      <header className="bg-gray-900 text-white py-4">
+        <div className="container mx-auto">
+          <div id="branding">
+            <h1 className="text-3xl">
+              <a href="index.html">
+                <span id="trackerText">Parcel<span className="text-yellow-500">Pal</span></span>
+              </a>
+            </h1>
+          </div>
+          <nav>
+            <ul className="flex space-x-4">
+              <li>
+                <a href="dashboard.html">Dashboard</a>
+              </li>
+              <li>
+                <a className="current" href="parcel.html">
+                  Parcel
+                </a>
+              </li>
+              <li>
+                <a href="index.html">Logout</a>
+              </li>
+            </ul>
+          </nav>
         </div>
-        <div className="mb-4">
-          <label htmlFor="phoneNo" className="block font-medium text-black mb-2 text-lg">
-            Phone No
-          </label>
-          <input
-            type="text"
-            id="phoneNo"
-            placeholder="Phone number"
-            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-green-500 text-lg"
-            value={phoneNo}
-            onChange={(e) => setPhoneNo(e.target.value)}
-          />
+      </header>
+
+      <section className="bg-yellow-300 py-16">
+        <div className="container mx-auto">
+          <div className="white-login bg-white p-8 rounded-lg">
+            <h3 className="text-3xl text-center">Create New Parcel</h3>
+            <form onSubmit={handleFormSubmit}>
+              <div className="mb-4">
+                <input
+                  type="text"
+                  id="parcel"
+                  placeholder="Parcel Name"
+                  className="w-full p-2 border border-gray-300 rounded-md focus:outline-none"
+                  value={parcelName}
+                  onChange={(e) => setParcelName(e.target.value)}
+                />
+              </div>
+              <div className="mb-4">
+                <input
+                  type="text"
+                  id="weight"
+                  placeholder="Weight(Kg)"
+                  className="w-full p-2 border border-gray-300 rounded-md focus:outline-none"
+                  value={weight}
+                  onChange={(e) => setWeight(e.target.value)}
+                />
+              </div>
+              <div className="mb-4">
+                <input
+                  type="text"
+                  id="location"
+                  placeholder="Location"
+                  className="w-full p-2 border border-gray-300 rounded-md focus:outline-none"
+                  value={location}
+                  onChange={(e) => setLocation(e.target.value)}
+                />
+              </div>
+              <div className="mb-4">
+                <input
+                  type="text"
+                  id="destination"
+                  placeholder="Destination"
+                  className="w-full p-2 border border-gray-300 rounded-md focus:outline-none"
+                  value={destination}
+                  onChange={(e) => setDestination(e.target.value)}
+                />
+              </div>
+              <button
+                id="buttonSubmit"
+                type="submit"
+                className="bg-black text-yellow-500 p-2 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-yellow-500"
+              >
+                Submit
+              </button>
+            </form>
+          </div>
         </div>
-        <div className="mb-4">
-          <label htmlFor="weight" className="block font-medium text-black mb-2 text-lg">
-            Weight (kg)
-          </label>
-          <input
-            type="text"
-            id="weight"
-            placeholder="Weight in kilograms"
-            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-green-500 text-lg"
-            value={weight}
-            onChange={handleWeightChange}
-          />
+      </section>
+
+      <footer className="bg-gray-900 text-white py-4">
+        <div className="container mx-auto text-center">
+          <p>
+            <span id="trackerText">Parsel<span className="text-yellow-500">Pal</span></span>,
+            Copyright &copy; 2023
+          </p>
         </div>
-        <div className="mb-4">
-          <label htmlFor="pickup" className="block font-medium text-black mb-2 text-lg">
-            Pickup
-          </label>
-          <input
-            type="text"
-            id="pickup"
-            placeholder="Pickup location"
-            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-green-500 text-lg"
-            value={pickup}
-            onChange={(e) => setPickup(e.target.value)}
-          />
-        </div>
-        <div className="mb-4">
-          <label htmlFor="destination" className="block font-medium text-black mb-2 text-lg">
-            Destination
-          </label>
-          <input
-            type="text"
-            id="destination"
-            placeholder="Destination location"
-            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-green-500 text-lg"
-            value={destination}
-            onChange={(e) => setDestination(e.target.value)}
-          />
-        </div>
-        <div className="mb-6">
-          <label htmlFor="totalCost" className="block font-medium text-black mb-2 text-lg">
-            Total Cost (Ksh)
-          </label>
-          <input
-            type="text"
-            id="totalCost"
-            placeholder="Total cost will be calculated"
-            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-green-500 text-lg"
-            value={totalCost}
-            readOnly
-          />
-        </div>
-        <button
-          type="submit"
-          className="bg-black text-yellow-500 px-4 py-2 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-yellow-500 text-lg"
-        >
-          Send Parcel
-        </button>
-      </form>
+      </footer>
     </div>
   );
 };

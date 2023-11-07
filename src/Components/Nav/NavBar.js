@@ -32,9 +32,9 @@ export default class NavBar extends Component {
           <ul id='navbar' className={this.state.clicked ? 'navbar active' : 'navbar'}>
             <li><NavLink exact to="/" >Home</NavLink></li>
             <li><NavLink to="/sendparcel">Send Parcel</NavLink></li>
+            <li><NavLink exact to="/dashboard" >Dashboard</NavLink></li>
             <li><NavLink to="/tracking" >Tracking</NavLink></li>
-            <li><NavLink to="/payment">Payment</NavLink></li>
-            <li><NavLink to="/details">Details </NavLink></li>
+            <li><NavLink to="/admindashboard">AdminDashboard </NavLink></li>
 
             <li><NavLink to="/profile"><i className="fa-regular fa-user"></i></NavLink></li>
           </ul>
