@@ -23,7 +23,7 @@ export default class NavBar extends Component {
           />
           <div className="flex flex-col items-center justify-center space-y-2">
             <div className="font-extrabold text-[#ffd64d] text-sm">
-              <NavLink to="/" className="text-yellow-500">PARCELPAL.</NavLink>
+              <NavLink to="/home" className="text-yellow-500">PARCELPAL.</NavLink>
             </div>
           </div>
           </div>
@@ -32,9 +32,9 @@ export default class NavBar extends Component {
           <ul id='navbar' className={this.state.clicked ? 'navbar active' : 'navbar'}>
             <li><NavLink exact to="/" >Home</NavLink></li>
             <li><NavLink to="/sendparcel">Send Parcel</NavLink></li>
+            <li><NavLink exact to="/dashboard" >Dashboard</NavLink></li>
             <li><NavLink to="/tracking" >Tracking</NavLink></li>
-            <li><NavLink to="/payment">Payment</NavLink></li>
-            <li><NavLink to="/details">Details </NavLink></li>
+            <li><NavLink to="/admindashboard">AdminDashboard </NavLink></li>
 
             <li><NavLink to="/profile"><i className="fa-regular fa-user"></i></NavLink></li>
           </ul>

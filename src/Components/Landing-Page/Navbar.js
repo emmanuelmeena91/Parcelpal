@@ -18,7 +18,7 @@ const Navbar = () => {
           />
           <div className="flex flex-col items-center justify-center space-y-2">
             <div className="font-extrabold text-[#ffd64d] text-sm">
-              <Link to="/" className="text-yellow-500">PARCELPAL.</Link>
+              <Link to="/landing" className="text-yellow-500">PARCELPAL.</Link>
             </div>
           </div>
           </div>
@@ -26,7 +26,7 @@ const Navbar = () => {
         <div></div>
     
       <div className="navbar-right">
-        <Link to="/">Home</Link>
+        <Link to="/landing">Home</Link>
         <Link to="/signup">Signup</Link>
         <Link to="/about">About Us</Link>
         <Link to="/contact">Contact Us</Link>

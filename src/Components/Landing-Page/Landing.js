@@ -21,7 +21,7 @@ const Landing = () => {
         </div>
         <div className="achievement">
           <h3>5,000+</h3>
-          <p>Satisfied Customers</p>
+          <p>Satisfied Customers.</p>
         </div>
         <div className="achievement">
           <h3>24/7</h3>
@@ -30,7 +30,7 @@ const Landing = () => {
       </div>
       <div className="sendParcelButton">
         <h2>GET STARTED TODAY !</h2>
-        <NavLink to="/signup" className="text-yellow-500">
+        <NavLink to="/SignUp" className="text-yellow-500">
         <button>SEND PARCEL</button>
 
         </NavLink>

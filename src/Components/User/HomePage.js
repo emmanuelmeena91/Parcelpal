@@ -2,6 +2,9 @@ import React from "react";
 
 const HomePage = () => {
   return (
+    <div>
+  
+  
     <div className="bg-gray-300 min-h-screen">
    <section className="py-16 bg-gray-200">
   <div className="container mx-auto px-4">
@@ -296,7 +299,7 @@ const HomePage = () => {
     </p>
   </div>
 </section>
-
+</div>
 
     </div>
   );
