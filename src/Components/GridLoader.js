@@ -5,7 +5,7 @@ export default function GridLoaderSpinner() {
       <>
         <div style={{ width: "100px", margin: "auto", paddingTop: "8rem", display: "block" }}>
         <GridLoader
-            color="#36d7b7"
+            color="#9A7D0A"
             cssOverride={{}}
             loading
             margin={6}

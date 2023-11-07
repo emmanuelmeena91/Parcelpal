@@ -6,7 +6,6 @@ import { useNavigate, Link } from "react-router-dom"
 import GridLoaderSpinner from '../Components/GridLoader';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-// import axiosInstance from '../axios';
 
 export default function AdminLogInPage() {
 
