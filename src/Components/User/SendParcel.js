@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const SendParcel = () => {
+const SendParcel = ({ addParcel }) => {
   const [parcelName, setParcelName] = useState("");
   const [weight, setWeight] = useState("");
   const [location, setLocation] = useState("");
@@ -8,10 +8,28 @@ const SendParcel = () => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    // You can handle form submission logic here
+    // Create a new parcel object with the form data
+    const newParcel = {
+      parcelName,
+      weight,
+      location,
+      destination,
+      // You can add other properties as needed
+    };
+
+    // Call the addParcel function from props to update the parcel list
+    addParcel(newParcel);
+
+    // Clear the form fields or perform any other necessary actions
+    setParcelName("");
+    setWeight("");
+    setLocation("");
+    setDestination("");
+
     console.log("Form submitted");
   };
 
+  
   return (
     <div>
       <header className="bg-gray-900 text-white py-4">

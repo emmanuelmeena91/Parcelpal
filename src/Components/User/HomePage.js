@@ -1,10 +1,11 @@
 import React from "react";
+import CarouselWithContent from "./Carousel";
 
 const HomePage = () => {
   return (
     <div>
-  
-  
+   <CarouselWithContent/>
+
     <div className="bg-gray-300 min-h-screen">
    <section className="py-16 bg-gray-200">
   <div className="container mx-auto px-4">

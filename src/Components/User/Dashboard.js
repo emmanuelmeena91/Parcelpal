@@ -1,9 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import SendParcel from "./SendParcel"; // Import the SendParcel component
 
 const Dashboard = () => {
+  const [parcels, setParcels] = useState([]);
+  // Function to add a new parcel to the list
+  const addParcel = (newParcel) => {
+    setParcels([...parcels, newParcel]);
+  };
+
+
   return (
+ 
     <div>
+      <SendParcel addParcel={addParcel} />
+
       <header className="bg-gray-900 text-white py-4">
         <div className="container mx-auto flex justify-between items-center">
           <div id="branding">
