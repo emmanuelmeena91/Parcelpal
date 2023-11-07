@@ -6,6 +6,7 @@ import UserFooter from './Components/UserFooter';
 import AppRouter from './Components/User/AppRouter';
 import Home from './Components/Landing-Page/Home';
 import AdminDashboard from './Components/Admin/AdminDashboard';
+import AdminSignUpPage from './Pages/AdminSignUp';
 
 
 export default function App() {
@@ -18,6 +19,9 @@ export default function App() {
         <Route path="/admindashboard" element={<AdminDashboard />} />
           <Route path="/signup" element={<SignUpPage />} />
           <Route path="/login" element={<LogInPage />} />
+          <Route path="/adminsignup" element={<AdminSignUpPage />} />
+
+
         </Routes>
         <UserFooter />
       </>

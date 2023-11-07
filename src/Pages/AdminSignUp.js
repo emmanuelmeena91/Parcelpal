@@ -18,7 +18,7 @@ export default function AdminSignUpPage() {
         setIsLoading(false);
         toast.error("Server did not respond within 15 seconds. Please try again later.");
     };
-
+  
     const handleFormSubmit = async (values) => {
       const { special_key, ...rest } = values; 
       setIsLoading(true);
