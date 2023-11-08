@@ -15,6 +15,7 @@ export default function App() {
       <Home />
      < AppRouter/>        
         <Routes> 
+        <Route path="/" element={<Home />} /> {/* Set the default route to Home */}
         <Route path="/admindashboard" element={<AdminDashboard />} />
           <Route path="/signup" element={<SignUpPage />} />
           <Route path="/login" element={<LogInPage />} />
