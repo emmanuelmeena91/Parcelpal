@@ -2,7 +2,6 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import LogInPage from './Pages/LogInPage';
 import SignUpPage from './Pages/SignUpPage';
-import UserFooter from './Components/UserFooter';
 import AppRouter from './Components/User/AppRouter';
 import Home from './Components/Landing-Page/Home';
 import AdminDashboard from './Components/Admin/AdminDashboard';
@@ -25,7 +24,6 @@ export default function App() {
 
 
         </Routes>
-        <UserFooter />
       </>
     </Router>
   );

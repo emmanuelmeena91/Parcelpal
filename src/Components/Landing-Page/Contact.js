@@ -2,9 +2,10 @@
 
 import React from 'react';
 import './Contact.css';
-
+import UserFooter from '../User/UserFooter';
 const Contact = () => {
   return (
+    <div>
     <section className="contact">
       <div className="contactForm">
         <h2>Shoot us a message for any enquiries</h2>
@@ -43,6 +44,9 @@ const Contact = () => {
         </div>
       </div>
     </section>
+    <UserFooter />
+
+    </div>
   );
 }
 

@@ -1,15 +1,26 @@
 .signUpBackgroundDiv {
-  background-image: url("quantum-gradient.svg");
+  background-image: url("https://img.lovepik.com/background/20211022/medium/lovepik-light-effect-atmospheric-gold-powder-background-image_605806949.jpg");
   background-size: cover;
   background-position: center center;
-  height: 140vh;
+  height: 100vh; /* Adjusted to fit the viewport height */
   display: flex;
-  justify-content: flex-end; 
+  justify-content: center; /* Changed from flex-end to center */
   align-items: center;
 }
 
 .signUpDiv {
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: transparent;
+  color: white;
+  padding: 20px;
+  max-width: 500px; /* Adjusted to a smaller size */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  height: auto; /* Adjusted to fit the content */
+  width: 80%;
+  margin: 0 auto; /* Added to center the div */
+}
+.signUpDiv {
+  background-color: transparent;
+  color: white;
   padding: 20px;
   max-width: 850px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -46,14 +57,15 @@
 
 .signUpDiv input {
   width: 80%;
-  padding: 10px;
+  padding: 5px; /* Reduced padding to make input smaller */
   border: none;
   border-radius: 10px;
   margin-bottom: 20px; 
-  background-color: #F4F6F7 ; /* Use a slightly darker shade between white and grey (or cream) */
-  border: 1px solid #ccc; 
+  background-color: #F4F6F7;
+  border: 1px solid #ccc;
+  color: black; /* Yellow color for text */
+  font-weight: bold; /* Bold text */
 }
-
 
 .signUpDiv button[type="submit"] {
   width: 80%;
@@ -61,7 +73,7 @@
   border: none;
   border-radius: 10px;
   background-color: #F4D03F;
-  color: #fff;
+  color: black;
   cursor: pointer;
   margin-top: 20px; 
 }
@@ -111,4 +123,11 @@
   justify-content: center;
   align-items: center;
   z-index: 9999; /* Ensure it's on top of everything */
+}
+
+.signUpDiv h1 {
+  font-size: 2rem; 
+  color: #F4D03F; /* Yellow color for heading */
+  padding-left: 30px;
+  font-weight: bold; /* Bold heading */
 }
