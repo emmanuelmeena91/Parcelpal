@@ -15,7 +15,7 @@ const LandingPage = () => {
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/select" element={<Select />} />
-        <Route path="/*" element={<Navigate to="/" />} />
+        <Route path="/" element={<Navigate to="/" />} />
 </Routes>
 
     </div>
