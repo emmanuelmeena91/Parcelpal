@@ -7,8 +7,6 @@ import Home from './Components/Landing-Page/Home';
 import AdminDashboard from './Components/Admin/AdminDashboard';
 import AdminSignUpPage from './Pages/AdminSignUp';
 import AdminLoginPage from './Pages/AdminLogIn';
-import Landing from './Components/Landing-Page/Landing';
-import HomePage from './Components/Landing-Page/HomePage';
 export default function App() {
   return (
     <Router>
