@@ -33,36 +33,36 @@ const SendParcel = () => {
     className="bg-cover bg-center bg-no-repeat min-h-screen flex justify-center items-center"
     style={{ backgroundImage: 'url("https://img.lovepik.com/background/20211022/medium/lovepik-light-effect-atmospheric-gold-powder-background-image_605806949.jpg")' }}
   >      <div className="bg--900 rounded-lg shadow-lg p-6">
-        <h1 className="text-3xl font-semibold text-center text-yellow-400 mb-6">SendParcel</h1>
+        <h1 className="text-3xl font-semibold text-center text-orange-500 mb-6">SendParcel</h1>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
-            <label htmlFor="parcelName" className="block text-yellow-400 text-lg mb-2">
+            <label htmlFor="parcelName" className="block text-orange-500 text-lg mb-2">
               Parcel Name
             </label>
             <input
               type="text"
               id="parcelName"
               placeholder="Enter Parcel Name"
-              className="w-full px-4 py-2 border border-yellow-300 rounded-lg focus:outline-none focus:ring focus:ring-green-500 text-lg"
+              className="w-full px-4 py-2 border border-orange-500 rounded-lg focus:outline-none focus:ring focus:ring-green-500 text-lg"
               value={parcelName}
               onChange={(e) => setParcelName(e.target.value)}
             />
           </div>
           <div className="mb-4">
-            <label htmlFor="receiverName" className="block text-yellow-400 text-lg mb-2">
+            <label htmlFor="receiverName" className="block text-orange-500 text-lg mb-2">
               Receiver Name
             </label>
             <input
               type="text"
               id="receiverName"
               placeholder="Enter Receiver's Name"
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-green-500 text-lg"
+              className="w-full px-4 py-2 border border-gray-500 rounded-lg focus:outline-none focus:ring focus:ring-green-500 text-lg"
               value={receiverName}
               onChange={(e) => setReceiverName(e.target.value)}
             />
           </div>
           <div className="mb-4">
-            <label htmlFor="phoneNo" className="block text-yellow-400 text-lg mb-2">
+            <label htmlFor="phoneNo" className="block text-orange-500 text-lg mb-2">
               Phone Number
             </label>
             <input
@@ -75,7 +75,7 @@ const SendParcel = () => {
             />
           </div>
           <div className="mb-4">
-            <label htmlFor="weight" className="block text-yellow-400 text-lg mb-2">
+            <label htmlFor="weight" className="block text-orange-500 text-lg mb-2">
               Weight (kg)
             </label>
             <input
@@ -88,7 +88,7 @@ const SendParcel = () => {
             />
           </div>
           <div className="mb-4">
-            <label htmlFor="pickup" className="block text-yellow-400 text-lg mb-2">
+            <label htmlFor="pickup" className="block text-orange-500 text-lg mb-2">
               Pickup Location
             </label>
             <input
@@ -101,7 +101,7 @@ const SendParcel = () => {
             />
           </div>
           <div className="mb-4">
-            <label htmlFor="destination" className="block text-yellow-400 text-lg mb-2">
+            <label htmlFor="destination" className="block text-orange-500 text-lg mb-2">
               Destination Location
             </label>
             <input
@@ -114,7 +114,7 @@ const SendParcel = () => {
             />
           </div>
           <div className="mb-6">
-            <label htmlFor="totalCost" className="block text-yellow-400 text-lg mb-2">
+            <label htmlFor="totalCost" className="block text-orange-500 text-lg mb-2">
               Total Cost (Ksh)
             </label>
             <input
