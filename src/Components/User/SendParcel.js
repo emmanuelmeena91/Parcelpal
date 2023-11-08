@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const SendParcel = () => {
+const SendParcel = ({ addParcel }) => {
   const [parcelName, setParcelName] = useState("");
   const [weight, setWeight] = useState("");
   const [location, setLocation] = useState("");
@@ -8,33 +8,56 @@ const SendParcel = () => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    // You can handle form submission logic here
+    // Create a new parcel object with the form data
+    const newParcel = {
+      parcelName,
+      weight,
+      location,
+      destination,
+      // You can add other properties as needed
+    };
+
+    // Call the addParcel function from props to update the parcel list
+    addParcel(newParcel);
+
+    // Clear the form fields or perform any other necessary actions
+    setParcelName("");
+    setWeight("");
+    setLocation("");
+    setDestination("");
+
     console.log("Form submitted");
   };
 
   return (
     <div>
       <header className="bg-gray-900 text-white py-4">
-        <div className="container mx-auto">
-          <div id="branding">
+        <div className="container mx-auto flex justify-between items-center">
+          <div>
             <h1 className="text-3xl">
               <a href="index.html">
-                <span id="trackerText">Parcel<span className="text-yellow-500">Pal</span></span>
+                <span id="trackerText">
+                  Parcel<span className="text-yellow-500">Pal</span>
+                </span>
               </a>
             </h1>
           </div>
           <nav>
             <ul className="flex space-x-4">
               <li>
-                <a href="dashboard.html">Dashboard</a>
+                <a href="dashboard" className="text-yellow-500">
+                  Dashboard
+                </a>
               </li>
               <li>
-                <a className="current" href="parcel.html">
+                <a href="SendParcel" className="text-yellow-500">
                   Parcel
                 </a>
               </li>
               <li>
-                <a href="index.html">Logout</a>
+                <a href="\" className="text-yellow-500">
+                  Logout
+                </a>
               </li>
             </ul>
           </nav>
@@ -101,8 +124,9 @@ const SendParcel = () => {
       <footer className="bg-gray-900 text-white py-4">
         <div className="container mx-auto text-center">
           <p>
-            <span id="trackerText">Parsel<span className="text-yellow-500">Pal</span></span>,
-            Copyright &copy; 2023
+            <span id="trackerText">
+              Parsel<span className="text-yellow-500">Pal</span>
+            </span>, Copyright &copy; 2023
           </p>
         </div>
       </footer>

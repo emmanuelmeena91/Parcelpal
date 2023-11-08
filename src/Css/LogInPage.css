@@ -1,44 +1,44 @@
 .logInBackgroundDiv {
-  background-image: url("quantum-gradient.svg");
+  background-image: url("https://img.lovepik.com/background/20211022/medium/lovepik-light-effect-atmospheric-gold-powder-background-image_605806949.jpg");
   background-size: cover;
   background-position: center center;
   height: 100vh;
   display: flex;
-  justify-content: flex-end; 
+  justify-content: flex-end; /* Changed from flex-end to flex-end */
   align-items: center;
 }
 
 .logInDiv {
   background-color: rgba(255, 255, 255, 0.8);
   padding: 20px;
-  max-width: 850px;
+  max-width: 500px; /* Adjusted to a smaller size */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  height: 100vh;
+  height: auto; /* Adjusted to fit the content */
   width: 80%;
+  margin: 0 auto; /* Added to center the div */
   padding-left: 30px;
 }
 
 @media (max-width: 767px) {
   .logInBackgroundDiv {
-    justify-content: flex-end; 
-    height: auto; 
+    justify-content: flex-end;
+    height: auto;
     padding-left: 0px;
   }
 
   .logInDiv {
-      max-width: 700px;
-      width: 75%;
-    }
+    max-width: 700px;
+    width: 75%;
+  }
 
-    .logInDiv input {
-      width: 100%;
-    }
-    
-    .logInDiv button[type="submit"] {
-      width: 100%;
-    }
+  .logInDiv input {
+    width: 100%;
+  }
+
+  .logInDiv button[type="submit"] {
+    width: 100%;
+  }
 }
-
 
 .logInDiv form {
   margin: 30px;
@@ -46,58 +46,50 @@
 
 .logInDiv input {
   width: 80%;
-  padding: 10px;
+  padding: 10px; /* Adjusted padding */
   border: none;
   border-radius: 10px;
-  margin-bottom: 20px; 
-  background-color: #F4F6F7 ; /* Use a slightly darker shade between white and grey (or cream) */
-  border: 1px solid #ccc; 
+  margin-bottom: 20px;
+  background-color: #F4F6F7; /* Use a slightly darker shade between white and grey (or cream) */
+  border: 1px solid #ccc;
+  color: black; /* Yellow color for text */
+  font-weight: bold; /* Bold text */
 }
-
 
 .logInDiv button[type="submit"] {
   width: 80%;
   padding: 10px;
   border: none;
   border-radius: 10px;
-  background-color: #B7950
-  color: #fff;
+  background-color: #c19d0c;
+  color: black;
   cursor: pointer;
-  margin-top: 20px; 
+  margin-top: 20px;
 }
 
 .logInDiv h1 {
-  font-size: 2rem; 
-  color: #fff; 
+  font-size: 2rem;
+  color: #fff;
   padding-left: 30px;
-  color: #B7950B;
+  color: #c19b05;
+  font-weight: bold; /* Bold heading */
 }
 
 .logInDiv input:focus {
-  outline-color: #B7950B; 
+  outline-color: #9A7D0A;
 }
 
 .logInDiv button[type="submit"]:hover {
-  background-color: #796208; 
-  padding-left: 15px;
-  color: #F4D03F;
-}
-
-.logInDiv input:focus {
-  outline-color: #9A7D0A; 
-}
-
-.logInDiv button[type="submit"]:hover {
-  background-color: #9A7D0A; 
+  background-color: #9A7D0A;
   padding-left: 10px;
 }
 
 .logInDiv p a {
-  color: #3498db; 
+  color: #3498db;
 }
 
 .logInDiv p a:hover {
-  text-decoration: underline; 
+  text-decoration: underline;
 }
 
 .error-message {
@@ -116,10 +108,9 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5); 
+  background: rgba(0, 0, 0, 0.5); /* Translucent background */
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 9999; 
+  z-index: 9999; /* Ensure it's on top of everything */
 }
-

@@ -22,7 +22,7 @@ export default function SignUpPage() {
 
     const handleFormSubmit = async (values) => {
       setIsLoading(true);
-  
+    
       try {
           const response = await fetch(`${baseURL}register/`, {
               method: 'POST',

@@ -18,7 +18,7 @@ export default function AdminSignUpPage() {
         setIsLoading(false);
         toast.error("Server did not respond within 15 seconds. Please try again later.");
     };
-
+  
     const handleFormSubmit = async (values) => {
       const { special_key, ...rest } = values; 
       setIsLoading(true);
@@ -50,7 +50,7 @@ export default function AdminSignUpPage() {
               toast.success("Registration is successful, Log in to continue", {
                   onClose: () => {
                       setTimeout(() => {
-                          navigate("/admin-login");
+                          navigate("/Admindashboard");
                       }, 4000); 
                   }
               });
@@ -191,7 +191,7 @@ export default function AdminSignUpPage() {
   
             <button type="submit">Sign Up</button>
           </form>
-          <p>Already have an admin account? <Link to="/admin-login">Login here</Link></p>
+          <p>Already have an admin account? <Link to="/adminlogin">Login here</Link></p>
         </div>
       </div>
       {isLoading && (
