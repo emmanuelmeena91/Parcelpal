@@ -7,7 +7,7 @@ const AdminDashboard = () => {
   useEffect(() => {
     try {
       fetch(`https://parcelpalserver.onrender.com/parcels/`)
-      .then((response) => response.json())
+        .then((response) => response.json())
         .then((data) => setParcels(data.parcels))
         .catch((error) => console.error(error));
     } catch (error) {
@@ -17,6 +17,13 @@ const AdminDashboard = () => {
 
   const getStatus = (id, event) => {
     const newStatus = event.target.value;
+
+    // Update the status for the specific parcel
+    const updatedParcels = parcels.map((parcel) =>
+      parcel.id === id ? { ...parcel, status: newStatus } : parcel
+    );
+
+    setParcels(updatedParcels);
   };
 
   return (
@@ -109,17 +116,17 @@ const AdminDashboard = () => {
                 {parcels.map((parcel) => (
                   <tr key={parcel.id} className="border-b border-gray-500">
                     <td>&nbsp;</td>
-                    <td>{parcel.parcel_name}</td>
-                    <td>{parcel.weight} kg</td>
-                    <td>{parcel.origin}</td>
+                    <td className="text-green-50 ">{parcel.parcel_name}</td>
+                    <td className="text-green-50 ">{parcel.weight} kg</td>
+                    <td className="text-green-50 ">{parcel.origin}</td>
                     <td>
                       <span
                         className={
                           parcel.status === "Delivered"
-                            ? "text-green-600 font-bold"
+                            ? "text-gray-200 font-bold"
                             : parcel.status === "Processing"
-                            ? "text-yellow-600 font-bold"
-                            : "text-red-600 font-bold"
+                            ? "text-gray-200 font-bold"
+                            : "text-gray-200 font-bold"
                         }
                       >
                         {parcel.status}
@@ -151,7 +158,7 @@ const AdminDashboard = () => {
           </div>
         </div>
       </section>
-  <footer className="bg-green-700 text-white text-center py-2">
+      <footer className="bg-green-700 text-white text-center py-2">
         <p>
           <span className="font-sunflower">
             Parcel<span className="text-yellow-500">Pal</span>
@@ -160,7 +167,6 @@ const AdminDashboard = () => {
         </p>
       </footer>
     </div>
-    
   );
 };
 

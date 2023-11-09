@@ -1,8 +1,5 @@
 import React from "react";
 import { Routes, Route } from 'react-router-dom';
-import NavBar from '../Nav/NavBar';
-// import HomePage from './HomePage';
-import CarouselWithContent from './Carousel';
 import Tracking from "./Tracking";
 import SendParcel from './SendParcel';
 import { UserProfile } from "./UserProfile";
@@ -22,8 +19,8 @@ const AppRouter = () => {
           <Route path="/sendparcel" element={<SendParcel />} />
           <Route path="/profile" element={<UserProfile />} />
           <Route path="/tracking" element={<Tracking />} />
-          <Route path="/details" element={<Details />} />
-        </Routes>
+          <Route path="/details/:id" component={Details} />      
+          </Routes>
       </main>
     </div>
   );
