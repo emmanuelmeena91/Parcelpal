@@ -54,7 +54,7 @@ const SendParcel = () => {
                 </a>
               </li>
               <li>
-                <a href="/" className="text-orange-600 ">
+                <a href="/" className="text-orange-600  text-xl">
                   Logout
                 </a>
               </li>
