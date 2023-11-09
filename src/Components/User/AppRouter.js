@@ -19,7 +19,7 @@ const AppRouter = () => {
           <Route path="/sendparcel" element={<SendParcel />} />
           <Route path="/profile" element={<UserProfile />} />
           <Route path="/tracking" element={<Tracking />} />
-          <Route path="/details/:id" component={Details} />      
+          <Route path="/details/:id" element={<Details />} />
           </Routes>
       </main>
     </div>

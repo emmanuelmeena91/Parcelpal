@@ -1,13 +1,42 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom"
-import { useParams } from "react-router-dom";
-
+import React, { useState, useEffect } from "react";
+import { Link, useParams } from "react-router-dom";
 
 const Details = () => {
+  const [parcelDetails, setParcelDetails] = useState(null);
   const [status, setStatus] = useState("Pending");
+  const [loading, setLoading] = useState(true); // Added loading state
+  const { id } = useParams();
+
+  useEffect(() => {
+    // Fetch parcel details based on the id parameter
+    fetch(`https://parcelpalserver.onrender.com/parcels/${id}/`)
+      .then((response) => response.json())
+      .then((data) => {
+        setParcelDetails(data.parcel);
+        setStatus(data.parcel.status);
+        setLoading(false); // Set loading to false after data is received
+      })
+      .catch((error) => {
+        console.error(error);
+        setLoading(false); // Set loading to false in case of an error
+      });
+  }, [id]);
 
   const handleChangeStatus = (newStatus) => {
-    setStatus(newStatus);
+    // Update the status in the database
+    fetch(`https://parcelpalserver.onrender.com/parcels/${id}/`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ status: newStatus }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        // Update the status in the state
+        setStatus(data.parcel.status);
+      })
+      .catch((error) => console.error(error));
   };
 
   return (
@@ -24,15 +53,15 @@ const Details = () => {
           <nav>
             <ul className="flex space-x-4">
               <li>
-                <a href="dashboard">Dashboard</a>
+                <Link to="/dashboard">Dashboard</Link>
               </li>
               <li>
-                <a className="current" href="SendParcel">
+                <Link className="current" to="/sendparcel">
                   Parcel
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="landing">Logout</a>
+                <Link to="/landing">Logout</Link>
               </li>
             </ul>
           </nav>
@@ -43,41 +72,49 @@ const Details = () => {
         <div className="container mx-auto">
           <div className="detailContainer flex justify-center">
             <div className="detailsForm bg-white shadow-lg p-6 w-96">
-              <h2 className="text-2xl font-semibold mb-4">Request Details</h2>
+              <h2 className="text-2xl font-semibold mb-4">Parcel Details</h2>
               <hr />
-              <p>
-                <span className="font-semibold">Request Date</span>: May 22, 2018, 5:00pm
-              </p>
-              <p>
-                <b>Weight</b>: 25kg
-              </p>
-              <p>
-                <b>Amount</b>: #1500
-              </p>
-              <p>
-                <b>Status</b>: {status}
-              </p>
-              <p>
-                <b>Start Point</b>: Hughes Ave, Alagomeji-Yaba, Lagos, Nigeria
-              </p>
-              <p>
-                <b>Destination</b>: 235 Ikorodu Rd, Ilupeju, Lagos, Nigeria
-              </p>
-              <div className="mt-8">
-                <h2 className="text-2xl font-semibold mb-4">Results</h2>
-                <button
-                  className="bg-red-600 text-white px-4 py-2 rounded-md mr-2"
-                  onClick={() => handleChangeStatus("Canceled")}
-                >
-                  Cancel Order
-                </button>
-                <button
-                  className="bg-blue-800 text-white px-4 py-2 rounded-md"
-                  onClick={() => handleChangeStatus("Delivered")}
-                >
-                  Change Destination
-                </button>
-              </div>
+              {loading ? (
+                <p>Loading...</p>
+              ) : parcelDetails ? (
+                <>
+                  <p>
+                    <span className="font-semibold">Request Date</span>: {parcelDetails.created_at}
+                  </p>
+                  <p>
+                    <b>Weight</b>: {parcelDetails.weight} kg
+                  </p>
+                  <p>
+                    <b>Amount</b>: {parcelDetails.price}
+                  </p>
+                  <p>
+                    <b>Status</b>: {parcelDetails.status}
+                  </p>
+                  <p>
+                    <b>Origin</b>: {parcelDetails.origin}
+                  </p>
+                  <p>
+                    <b>Destination</b>: {parcelDetails.destination}
+                  </p>
+                  <div className="mt-8">
+                    <h2 className="text-2xl font-semibold mb-4">Results</h2>
+                    <button
+                      className="bg-red-600 text-white px-4 py-2 rounded-md mr-2"
+                      onClick={() => handleChangeStatus("Canceled")}
+                    >
+                      Cancel Order
+                    </button>
+                    {/* <button
+                      className="bg-blue-800 text-white px-4 py-2 rounded-md"
+                      onClick={() => handleChangeStatus("Delivered")}
+                    >
+                      Change Destination
+                    </button> */}
+                  </div>
+                </>
+              ) : (
+                <p>No data available</p>
+              )}
             </div>
           </div>
         </div>
