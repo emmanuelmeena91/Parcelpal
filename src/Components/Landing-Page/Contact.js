@@ -2,13 +2,12 @@
 
 import React from 'react';
 import './Contact.css';
-import UserFooter from '../User/UserFooter';
+
 const Contact = () => {
   return (
-    <div>
     <section className="contact">
       <div className="contactForm">
-        <h2>Shoot us a message for any enquiries</h2>
+        <h2>Contact Us</h2>
         <form>
           <div className="form-group">
             <label htmlFor="name">Name:</label>
@@ -44,9 +43,6 @@ const Contact = () => {
         </div>
       </div>
     </section>
-    <UserFooter />
-
-    </div>
   );
 }
 
