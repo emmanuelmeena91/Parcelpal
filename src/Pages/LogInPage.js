@@ -6,19 +6,14 @@ import { useNavigate, Link } from "react-router-dom"
 import GridLoaderSpinner from '../Components/GridLoader';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-// import axiosInstance from '../axios';
 
 export default function LogInPage() {
 
-    const [showPassword, setShowPassword] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate()
   
     const baseURL = 'https://parcelpalserver.onrender.com/'
 
-    const handleTogglePassword = () => {
-        setShowPassword(!showPassword);
-      };
     
     const handleTimeout = () => {
         setIsLoading(false);
@@ -111,17 +106,14 @@ export default function LogInPage() {
             <label htmlFor="password">Password</label>
             <br />
             <input  
-              type={showPassword ? 'text' : 'password'}
+              type='password'
               id="password"
               name="password"
               onChange={formik.handleChange}
               value={formik.values.password}
               autoComplete="off"
             />
-            <span className="input-icon" onClick={handleTogglePassword}>
-                <i className={showPassword ? 'fa fa-eye' : 'fa fa-eye-slash'} />
-            </span>
-
+           
             {formik.touched.password && formik.errors.password ? (
               <div style={{ color: 'red' }}>{formik.errors.password}</div>
             ) : null}

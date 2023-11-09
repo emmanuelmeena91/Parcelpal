@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const AdminDashboard = () => {
   const [parcels, setParcels] = useState([]);
@@ -15,15 +17,28 @@ const AdminDashboard = () => {
     }
   }, []);
 
-  const getStatus = (id, event) => {
-    const newStatus = event.target.value;
+  const handleStatusChange = async (id, newStatus) => {
+    try {
+      const response = await fetch(`https://parcelpalserver.onrender.com/parcels/${id}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          id:id,
+          status: newStatus,
+        }),
+      });
 
-    // Update the status for the specific parcel
-    const updatedParcels = parcels.map((parcel) =>
-      parcel.id === id ? { ...parcel, status: newStatus } : parcel
-    );
-
-    setParcels(updatedParcels);
+      if (response.ok) {
+        toast.success("Parcel status updated successfully")
+      } else {
+        console.error(`Error updating status for parcel ${id}`);
+        toast.error("`Error updating status for parcel`.");
+      }
+    } catch (error) {
+      console.error('Network error:', error);
+    }
   };
 
   return (
@@ -134,17 +149,17 @@ const AdminDashboard = () => {
                     </td>
                   
                     <td>
-                      <select
-                        className="select-button"
-                        id={`status${parcel.id}`}
-                        onChange={(e) => getStatus(parcel.id, e)}
-                        value={parcel.status}
-                      >
-                        <option value="Processing">Processing</option>
-                        <option value="Delivered">Delivered</option>
-                        <option value="Canceled">Canceled</option>
-                      </select>
-                    </td>
+                    <select
+                      className="select-button"
+                      id={`status${parcel.id}`}
+                      onChange={(e) => handleStatusChange(parcel.id, e.target.value)}
+                      value={parcel.status}
+                    >
+                      <option value="Processing">Processing</option>
+                      <option value="Delivered">Delivered</option>
+                      <option value="Canceled">Canceled</option>
+                    </select>
+                  </td>
                   </tr>
                 ))}
               </tbody>
@@ -160,6 +175,7 @@ const AdminDashboard = () => {
           , Copyright &copy; {new Date().getFullYear()}
         </p>
       </footer>
+      <ToastContainer />
     </div>
   );
 };

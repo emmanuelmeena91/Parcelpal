@@ -1,4 +1,5 @@
 import { useState } from "react";
+import '../Css/SignUpPage.css';
 import * as yup from "yup";
 import { useFormik } from "formik";
 import { useNavigate, Link } from "react-router-dom";
@@ -90,145 +91,112 @@ export default function AdminSignUpPage() {
   });
 
   return (
-    <div
-      className="bg-cover bg-center h-screen"
-      style={{
-        backgroundImage: `url('https://img.lovepik.com/background/20211022/medium/lovepik-light-effect-atmospheric-gold-powder-background-image_605806949.jpg')`,
-      }}
-    >
-      <div className="flex flex-col items-center justify-center h-screen bg-opacity-80">
-        <h1 className="text-2xl mb-4 text-orange-500">Admin Sign Up</h1>
-        <form
-          onSubmit={formik.handleSubmit}
-          className="w-full max-w-md bg-orange-500 p-4 rounded shadow-md"
-        >
-          <div className="mb-4">
-            <label htmlFor="first_name" className="text-white">
-              First Name
-            </label>
+    <>
+      <div className="signUpBackgroundDiv">
+        <div className="signUpDiv">
+          <h1>Admin Sign Up</h1>
+          <form onSubmit={formik.handleSubmit} style={{ margin: "30px" }}>
+            {/* First Name */}
+            <label htmlFor="first_name">First Name</label>
+            <br />
             <input
               id="first_name"
               name="first_name"
-              type="text"
               onChange={formik.handleChange}
               value={formik.values.first_name}
-              className="w-full p-2 border rounded"
               autoComplete="off"
             />
-            {formik.touched.first_name && formik.errors.first_name && (
-              <p className="text-red-500">{formik.errors.first_name}</p>
-            )}
-          </div>
-
-          <div className="mb-4">
-            <label htmlFor="last_name" className="text-white">
-              Last Name
-            </label>
+            {formik.touched.first_name && formik.errors.first_name ? (
+              <div style={{ color: 'red' }}>{formik.errors.first_name}</div>
+            ) : null}
+            <br />
+  
+            {/* Last Name */}
+            <label htmlFor="last_name">Last Name</label>
+            <br />
             <input
               id="last_name"
               name="last_name"
-              type="text"
               onChange={formik.handleChange}
               value={formik.values.last_name}
-              className="w-full p-2 border rounded"
               autoComplete="off"
             />
-            {formik.touched.last_name && formik.errors.last_name && (
-              <p className="text-red-500">{formik.errors.last_name}</p>
-            )}
-          </div>
-
-          <div className="mb-4">
-            <label htmlFor="email" className="text-white">
-              Email Address
-            </label>
+            {formik.touched.last_name && formik.errors.last_name ? (
+              <div style={{ color: 'red' }}>{formik.errors.last_name}</div>
+            ) : null}
+            <br />
+  
+            {/* Email */}
+            <label htmlFor="email">Email Address</label>
+            <br />
             <input
               id="email"
               name="email"
-              type="email"
               onChange={formik.handleChange}
               value={formik.values.email}
-              className="w-full p-2 border rounded"
               autoComplete="off"
             />
-            {formik.touched.email && formik.errors.email && (
-              <p className="text-red-500">{formik.errors.email}</p>
-            )}
-          </div>
-
-          <div className="mb-4">
-            <label htmlFor="username" className="text-white">
-              Username
-            </label>
+            {formik.touched.email && formik.errors.email ? (
+              <div style={{ color: 'red' }}>{formik.errors.email}</div>
+            ) : null}
+            <br />
+  
+            {/* Username */}
+            <label htmlFor="username">Username</label>
+            <br />
             <input
               id="username"
               name="username"
-              type="text"
               onChange={formik.handleChange}
               value={formik.values.username}
-              className="w-full p-2 border rounded"
               autoComplete="off"
             />
-            {formik.touched.username && formik.errors.username && (
-              <p className="text-red-500">{formik.errors.username}</p>
-            )}
-          </div>
-
-          <div className="mb-4">
-            <label htmlFor="password" className="text-white">
-              Password
-            </label>
+            {formik.touched.username && formik.errors.username ? (
+              <div style={{ color: 'red' }}>{formik.errors.username}</div>
+            ) : null}
+            <br />
+  
+            {/* Password */}
+            <label htmlFor="password">Password</label>
+            <br />
             <input
               id="password"
               name="password"
-              type="password"
               onChange={formik.handleChange}
               value={formik.values.password}
-              className="w-full p-2 border rounded"
               autoComplete="off"
             />
-            {formik.touched.password && formik.errors.password && (
-              <p className="text-red-500">{formik.errors.password}</p>
-            )}
-          </div>
+            {formik.touched.password && formik.errors.password ? (
+              <div style={{ color: 'red' }}>{formik.errors.password}</div>
+            ) : null}
+            <br />
 
-          <div className="mb-4">
-            <label htmlFor="special_key" className="text-white">
-              Access Key
-            </label>
+            {/* Secret Key */}
+            <label htmlFor="special_key">Access Key</label>
+            <br />
             <input
-              id="special_key"
+              id="special_keyl"
               name="special_key"
-              type="text"
               onChange={formik.handleChange}
               value={formik.values.special_key}
-              className="w-full p-2 border rounded"
               autoComplete="off"
             />
-            {formik.touched.special_key && formik.errors.special_key && (
-              <p className="text-red-500">{formik.errors.special_key}</p>
-            )}
-          </div>
-
-          <button
-            type="submit"
-            className="w-full bg-orange-300 text-white p-2 rounded hover:bg-orange-600"
-          >
-            Sign Up
-          </button>
-        </form>
-
-        <p className="mt-4 bg-blue-500 border-l text-white p-2">
-          Already have an admin account? <Link to="/adminlogin">Login here</Link>
-        </p>
-      </div>
-
-      {isLoading && (
-        <div className="overlay">
-          <GridLoaderSpinner />
+            {formik.touched.special_key && formik.errors.special_key ? (
+              <div style={{ color: 'red' }}>{formik.errors.special_key}</div>
+            ) : null}
+            <br />
+  
+            <button type="submit">Sign Up</button>
+          </form>
+          <p>Already have an admin account? <Link to="/admin-login">Login here</Link></p>
         </div>
-      )}
+      </div>
+      {isLoading && (
+                <div className="overlay">
+                    <GridLoaderSpinner />
+                </div>
+            )}
       <ToastContainer />
-    </div>
+    </>
   );
 }

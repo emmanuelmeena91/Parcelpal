@@ -1,3 +1,4 @@
+import '../Css/SignUpPage.css';
 import { useState } from "react";
 import * as yup from "yup";
 import { useFormik } from "formik";
@@ -81,135 +82,112 @@ export default function SignUpPage() {
   });
 
   return (
-    <div
-      className="bg-cover bg-center h-screen"
-      style={{
-        backgroundImage: `url('https://img.lovepik.com/background/20211022/medium/lovepik-light-effect-atmospheric-gold-powder-background-image_605806949.jpg')`,
-      }}
-    >
-      {/* Main content with sign-up form */}
-      <div className="flex flex-col items-center justify-center h-screen bg-opacity-80">
-        <h1 className="text-2xl mb-4 text-orange-500">Sign Up</h1>
-        <form
-          onSubmit={formik.handleSubmit}
-          className="w-full max-w-md bg-orange-500 p-4 rounded shadow-md"
-        >
-          <div className="mb-4">
+    <>
+      <div className="signUpBackgroundDiv">
+        <div className="signUpDiv">
+          <h1>Sign Up</h1>
+          <form onSubmit={formik.handleSubmit} style={{ margin: "30px" }}>
+            {/* First Name */}
             <label htmlFor="first_name">First Name</label>
+            <br />
             <input
               id="first_name"
               name="first_name"
-              type="text"
               onChange={formik.handleChange}
               value={formik.values.first_name}
-              className="w-full p-2 border rounded"
               autoComplete="off"
             />
-            {formik.touched.first_name && formik.errors.first_name && (
-              <p className="text-red-500">{formik.errors.first_name}</p>
-            )}
-          </div>
-
-          <div className="mb-4">
+            {formik.touched.first_name && formik.errors.first_name ? (
+              <div style={{ color: 'red' }}>{formik.errors.first_name}</div>
+            ) : null}
+            <br />
+  
+            {/* Last Name */}
             <label htmlFor="last_name">Last Name</label>
+            <br />
             <input
               id="last_name"
               name="last_name"
-              type="text"
               onChange={formik.handleChange}
               value={formik.values.last_name}
-              className="w-full p-2 border rounded"
               autoComplete="off"
             />
-            {formik.touched.last_name && formik.errors.last_name && (
-              <p className="text-red-500">{formik.errors.last_name}</p>
-            )}
-          </div>
-
-          <div className="mb-4">
+            {formik.touched.last_name && formik.errors.last_name ? (
+              <div style={{ color: 'red' }}>{formik.errors.last_name}</div>
+            ) : null}
+            <br />
+  
+            {/* Email */}
             <label htmlFor="email">Email Address</label>
+            <br />
             <input
               id="email"
               name="email"
-              type="email"
               onChange={formik.handleChange}
               value={formik.values.email}
-              className="w-full p-2 border rounded"
-              autoComplete="off" // Add this attribute
+              autoComplete="off"
             />
-
-            {formik.touched.email && formik.errors.email && (
-              <p className="text-red-500">{formik.errors.email}</p>
-            )}
-          </div>
-
-          <div className="mb-4">
+            {formik.touched.email && formik.errors.email ? (
+              <div style={{ color: 'red' }}>{formik.errors.email}</div>
+            ) : null}
+            <br />
+  
+            {/* Username */}
             <label htmlFor="username">Username</label>
+            <br />
             <input
               id="username"
               name="username"
-              type="text"
               onChange={formik.handleChange}
               value={formik.values.username}
-              className="w-full p-2 border rounded"
               autoComplete="off"
             />
-            {formik.touched.username && formik.errors.username && (
-              <p className="text-red-500">{formik.errors.username}</p>
-            )}
-          </div>
-
-          <div className="mb-4">
+            {formik.touched.username && formik.errors.username ? (
+              <div style={{ color: 'red' }}>{formik.errors.username}</div>
+            ) : null}
+            <br />
+  
+            {/* Password */}
             <label htmlFor="password">Password</label>
+            <br />
             <input
               id="password"
               name="password"
-              type="password"
               onChange={formik.handleChange}
               value={formik.values.password}
-              className="w-full p-2 border rounded"
               autoComplete="off"
             />
-            {formik.touched.password && formik.errors.password && (
-              <p className="text-red-500">{formik.errors.password}</p>
-            )}
-          </div>
+            {formik.touched.password && formik.errors.password ? (
+              <div style={{ color: 'red' }}>{formik.errors.password}</div>
+            ) : null}
+            <br />
 
-          <div className="mb-4">
+            {/* Phone Number */}
             <label htmlFor="phone_number">Phone Number</label>
+            <br />
             <input
-              id="phone_number"
-              name="phone_number"
-              type="text"
-              onChange={formik.handleChange}
-              value={formik.values.phone_number}
-              className="w-full p-2 border rounded"
-              autoComplete="off"
+            id="phone_number"
+            name="phone_number" 
+            onChange={formik.handleChange}
+            value={formik.values.phone_number}
+            autoComplete="off"
             />
-            {formik.touched.phone_number && formik.errors.phone_number && (
-              <p className="text-red-500">{formik.errors.phone_number}</p>
-            )}
-          </div>
+            {formik.touched.phone_number && formik.errors.phone_number ? (
+            <div style={{ color: 'red' }}>{formik.errors.phone_number}</div>
+            ) : null}
+            <br />
 
-          <button
-            type="submit"
-            className="w-full bg-orange-300 text-white p-2 rounded cursor-pointer hover:bg-orange-600"
-          >
-            Sign Up
-          </button>
-        </form>
-
-        <p className="mt-4 bg-blue-500 border-l">
-          Already have an account? <Link to="/login">Login here</Link>
-        </p>
-      </div>
-
-      {isLoading && (
-        <div className="overlay">
-          <GridLoaderSpinner />
+            <button type="submit">Sign Up</button>
+          </form>
+          <p>Already have an account? <Link to="/login">Login here</Link></p>
         </div>
-      )}
+      </div>
+      {isLoading && (
+                <div className="overlay">
+                    <GridLoaderSpinner />
+                </div>
+            )}
       <ToastContainer />
-    </div>
+    </>
   );
 }

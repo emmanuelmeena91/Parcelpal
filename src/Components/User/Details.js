@@ -1,19 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Details = () => {
   const [parcelDetails, setParcelDetails] = useState(null);
-  const [status, setStatus] = useState("Pending");
   const [loading, setLoading] = useState(true); // Added loading state
   const { id } = useParams();
 
   useEffect(() => {
-    // Fetch parcel details based on the id parameter
     fetch(`https://parcelpalserver.onrender.com/parcels/${id}/`)
       .then((response) => response.json())
       .then((data) => {
         setParcelDetails(data.parcel);
-        setStatus(data.parcel.status);
         setLoading(false); // Set loading to false after data is received
       })
       .catch((error) => {
@@ -22,21 +21,28 @@ const Details = () => {
       });
   }, [id]);
 
-  const handleChangeStatus = (newStatus) => {
-    // Update the status in the database
-    fetch(`https://parcelpalserver.onrender.com/parcels/${id}/`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ status: newStatus }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        // Update the status in the state
-        setStatus(data.parcel.status);
-      })
-      .catch((error) => console.error(error));
+  const handleChangeStatus = async (newStatus) => {
+    try {
+      const response = await fetch(`https://parcelpalserver.onrender.com/parcels/${id}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          id:id,
+          status: newStatus,
+        }),
+      });
+
+      if (response.ok) {
+        toast.success("Parcel canceled successfully")
+      } else {
+        console.error(`Error updating status for parcel ${id}`);
+        toast.error("`Error updating status for parcel`.");
+      }
+    } catch (error) {
+      console.error('Network error:', error);
+    }
   };
 
   return (
@@ -130,6 +136,8 @@ const Details = () => {
           </p>
         </div>
       </footer>
+      <ToastContainer />
+
     </div>
   );
 };

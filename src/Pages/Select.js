@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 export const Select = () => {
   return (
-    <div className="bg-cover bg-center bg-no-repeat min-h-screen" style={{ backgroundImage: 'url("https://img.lovepik.com/background/20211022/medium/lovepik-light-effect-atmospheric-gold-powder-background-image_605806949.jpg")' }}>
+    <div className="bg-cover bg-center bg-no-repeat min-h-screen" style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1454391304352-2bf4678b1a7a?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")' }}>
       <div className="h-full flex flex-col justify-center items-center bg-opacity-80">
         <h2 className="text-2xl font-semibold mb-8 text-white">Welcome! Please choose your role to proceed.</h2>
         <div className="sendParcelButton mb-4">
