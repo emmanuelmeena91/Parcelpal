@@ -7,7 +7,7 @@ const Dashboard = () => {
   useEffect(() => {
     let user_id = parseInt(localStorage.getItem('user_id')); 
     try {
-      fetch(`https://parcelpalserver.onrender.com/user_parcels/${user_id}`)
+      fetch(`https://parcelpalserver.onrender.com/user_parcels/${user_id}/`)
       .then((response) => response.json())
         .then((data) => setParcels(data.parcels))
         .catch((error) => console.error(error));
