@@ -94,10 +94,10 @@ const Dashboard = () => {
                 <tbody>
                   {parcels.map((parcel) => (
                     <tr key={parcel.id} className="border-b border-gray-500">
-                      <td className="px-4 py-2 text-gray-50 font-semibold">{parcel.parcel_name}</td>
-                      <td className="px-4 py-2 text-gray-50 font-semibold">{parcel.weight} kg</td>
-                      <td className="px-4 py-2 text-gray-50 font-semibold">{parcel.origin}</td>
-                      <td className="px-4 py-2 text-gray-50 font-semibold">{parcel.destination}</td>
+                      <td className="px-4 py-2 text-gray-100 font-semibold">{parcel.parcel_name}</td>
+                      <td className="px-4 py-2 text-gray-100 font-semibold">{parcel.weight} kg</td>
+                      <td className="px-4 py-2 text-gray-100 font-semibold">{parcel.origin}</td>
+                      <td className="px-4 py-2 text-gray-100 font-semibold">{parcel.destination}</td>
                       <td className={`px-4 py-2 ${parcel.status === "Delivered" ? "text-green-600" : (parcel.status === "Declined" ? "text-red-600" : "text-orange-500")} font-semibold`}>{parcel.status}</td>
                       <td className="px-4 py-2">
                         <Link to={`/details/${parcel.id}`}>
