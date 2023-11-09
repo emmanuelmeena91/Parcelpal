@@ -5,10 +5,10 @@ const Dashboard = () => {
   const [parcels, setParcels] = useState([]);
 
   useEffect(() => {
-    let id = localStorage.getItem('user_id');
+    let user_id = parseInt(localStorage.getItem('user_id')); 
     try {
-      fetch('https://parcelpalserver.onrender.com/parcels/') 
-        .then((response) => response.json())
+      fetch(`https://parcelpalserver.onrender.com/user_parcels/${user_id}`)
+      .then((response) => response.json())
         .then((data) => setParcels(data.parcels))
         .catch((error) => console.error(error));
     } catch (error) {
@@ -29,7 +29,6 @@ const Dashboard = () => {
               </Link>
             </h1>
           </div>
-          {console.log(parcels)}
           <nav className="text-right bg-transparent ">
             <ul className="flex space-x-4">
               <li>
