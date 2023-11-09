@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 const SendParcel = () => {
+  const [parcelName, setParcelName] = useState("");
   const [receiverName, setReceiverName] = useState("");
   const [phoneNo, setPhoneNo] = useState("");
   const [weight, setWeight] = useState("");
@@ -33,6 +34,19 @@ const SendParcel = () => {
         SendParcel
       </h1>
       <form onSubmit={handleSubmit}>
+        <div className="mb-4">
+          <label htmlFor="parcelName" className="block font-medium text-black mb-2 text-lg">
+            Parcel Name
+          </label>
+          <input
+            type="text"
+            id="parcelName"
+            placeholder="Parcel Name"
+            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-green-500 text-lg"
+            value={parcelName}
+            onChange={(e) => setParcelName(e.target.value)}
+          />
+        </div>
         <div className="mb-4">
           <label htmlFor="receiverName" className="block font-medium text-black mb-2 text-lg">
             Receiver Name
@@ -74,7 +88,7 @@ const SendParcel = () => {
         </div>
         <div className="mb-4">
           <label htmlFor="pickup" className="block font-medium text-black mb-2 text-lg">
-            Pickup
+            Pickup Location
           </label>
           <input
             type="text"
@@ -87,7 +101,7 @@ const SendParcel = () => {
         </div>
         <div className="mb-4">
           <label htmlFor="destination" className="block font-medium text-black mb-2 text-lg">
-            Destination
+            Destination Location
           </label>
           <input
             type="text"

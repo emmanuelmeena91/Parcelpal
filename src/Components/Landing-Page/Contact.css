@@ -3,7 +3,9 @@
 .contact {
   text-align: center;
   padding: 50px 0;
-  background-color: #fce052;
+  background-image: url("https://img.lovepik.com/background/20211022/medium/lovepik-light-effect-atmospheric-gold-powder-background-image_605806949.jpg"); /* Replace with your image URL */
+  background-size: cover;
+  background-position: center;
   border-radius: 10px;
 }
 
@@ -15,7 +17,6 @@
   padding: 30px;
   border-radius: 10px;
 }
-
 .contactForm h2 {
   font-size: 1.5em;
   margin-bottom: 20px;

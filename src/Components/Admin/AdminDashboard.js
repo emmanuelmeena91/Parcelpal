@@ -1,81 +1,87 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const AdminDashboard = () => {
-  const [parcelStatus, setParcelStatus] = useState({
-    one: "Delivered",
-    two: "Declined",
-    three: "Processing",
-    four: "Delivered",
-    five: "Declined",
-    six: "Processing",
-    seven: "Canceled",
-  });
+  const [parcels, setParcels] = useState([]);
+
+  useEffect(() => {
+    // Fetch admin parcels data from your API (admin-specific data)
+    fetch("/api/admin-parcels") // Replace with your admin-specific API endpoint
+      .then((response) => response.json())
+      .then((data) => setParcels(data))
+      .catch((error) => console.error(error));
+  }, []);
 
   const getStatus = (id, event) => {
     const newStatus = event.target.value;
-    setParcelStatus({ ...parcelStatus, [id]: newStatus });
+    // You can update the status in your API here if needed
   };
 
   return (
-    <div className="bg-gray-200">
-      <header className="bg-yellow-500 p-4 text-white">
+    <div className="bg-cover bg-center bg-no-repeat bg-fixed min-h-screen" style={{ backgroundImage: 'url(https://e0.pxfuel.com/wallpapers/321/742/desktop-wallpaper-request-original-xbox-theme-for-new-dashboard-xboxthemes.jpg)' }}>
+      <header className="py-4">
         <div className="container mx-auto flex justify-between items-center">
-          <h1 className="text-2xl font-bold">
-            <a href="index.html">
-              <span className="font-sunflower">Parcel<span className="text-gray-900">Pal</span></span>
-            </a>
-          </h1>
-          <nav>
-            <ul className="flex space-x-6">
+          <div>
+            <h1>
+              <Link to="/admindashboard">
+                <span className="text-3xl font-extrabold">
+                  <span className="text-gray-100">Parcel</span>
+                  <span className="text-yellow-500">Pal Admin</span>
+                </span>
+              </Link>
+            </h1>
+          </div>
+          <nav className="bg-transparent">
+            <ul className="flex space-x-4">
               <li>
-                <a className="hover:text-yellow-500" href="AdminDashboard">
-                  Admin
-                </a>
+                <Link to="/admindashboard" className="current text-orange-600 text-xl">
+                  Admin 
+                </Link>
               </li>
               <li>
-                <a className="hover:text-yellow-500" href="Dashboard">
-                  User
-                </a>
+                <Link to="/dashboard" className="text-orange-600 text-xl">
+                  User 
+                </Link>
               </li>
               <li>
-                <a className="hover:text-yellow-500" href="index.html">
-                  Logout
-                </a>
+                <Link to="/sendparcel" className="text-orange-600 text-xl">
+                  Parcel
+                </Link>
               </li>
             </ul>
           </nav>
         </div>
       </header>
 
-      <section className="py-10">
+      <section className="py-8">
         <div className="container mx-auto">
-          <h1 className="text-3xl font-bold text-center">Welcome, Admin</h1>
+          <h1 className="text-3xl font-bold text-center text-green-600">Welcome, Admin</h1>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">
-            <div className="bg-white p-4 text-center">
-              <p className="text-gray-600">Processing Parcels</p>
-              <h1 className="text-2xl text-blue-500 font-bold">859</h1>
+            <div className="dashboard-stat  p-4 rounded-lg shadow-md bg-yellow-800">
+              <p className="text-gray-50 ">Processing Parcels</p>
+              <h1 className="text-2xl text-indigo-50 font-bold">859</h1>
             </div>
-            <div className="bg-white p-4 text-center">
-              <p className="text-gray-600">Delivered Parcels</p>
-              <h1 className="text-2xl text-green-500 font-bold">3594</h1>
+            <div className="dashboard-stat bg-green-800 p-4 rounded-lg shadow-md">
+              <p className="text-gray-50">Delivered Parcels</p>
+              <h1 className="text-2xl text-green-50 font-bold">3594</h1>
             </div>
-            <div className="bg-white p-4 text-center">
-              <p className="text-gray-600">All Parcels</p>
-              <h1 className="text-2xl text-yellow-500 font-bold">4453</h1>
+            <div className="dashboard-stat bg-blue-900 p-4 rounded-lg shadow-md">
+              <p className="text-gray-50">All Parcels</p>
+              <h1 className="text-2xl text-yellow-50 font-bold">4453</h1>
             </div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">
-            <div className="bg-white p-4 text-center">
-              <p className="text-gray-600">All Users</p>
-              <h1 className="text-2xl text-red-500 font-bold">50</h1>
+            <div className="dashboard-stat bg-blue-900 p-4 rounded-lg shadow-md">
+              <p className="text-gray-50">All Users</p>
+              <h1 className="text-2xl text-red-50 font-bold">50</h1>
             </div>
-            <div className="bg-white p-4 text-center">
-              <p className="text-gray-600">Available Transit</p>
-              <h1 className="text-2xl text-purple-500 font-bold">5</h1>
+            <div className="dashboard-stat bg-gray-800 p-4 rounded-lg shadow-md">
+              <p className="text-gray-50">Available Transit</p>
+              <h1 className="text-2xl text-purple-50 font-bold">5</h1>
             </div>
-            <div className="bg-white p-4 text-center">
-              <p className="text-gray-600">Declined Parcels</p>
-              <h1 className="text-2xl text-pink-500 font-bold">10</h1>
+            <div className="dashboard-stat bg-red-800 p-4 rounded-lg shadow-md">
+              <p className="text-gray-50">Declined Parcels</p>
+              <h1 className="text-2xl text-pink-50 font-bold">10</h1>
             </div>
           </div>
         </div>
@@ -83,11 +89,11 @@ const AdminDashboard = () => {
 
       <section>
         <div className="container mx-auto">
-          <h2 className="text-2xl font-bold mb-4">All Packages</h2>
-          <div className="w-full overflow-x-auto">
-            <table className="w-full mx-auto border-collapse border border-gray-500 max-w-5xl">
+          <h2 className="text-2xl font-bold mb-4 text-green-50">All Admin Parcels</h2>
+          <div className="w-full overflow-x-auto ">
+            <table className="w-full mx-auto border-collapse border border-gray-500 max-w-7xl">
               <thead>
-                <tr className="bg-yellow-500">
+                <tr className="bg-green-700">
                   <th className="py-2 px-4 font-semibold">Parcel</th>
                   <th className="py-2 px-4 font-semibold">Weight(kg)</th>
                   <th className="py-2 px-4 font-semibold">Location</th>
@@ -98,109 +104,61 @@ const AdminDashboard = () => {
                 </tr>
               </thead>
               <tbody>
-                <tr className="border-b border-gray-500">
-                  <td>&nbsp;</td>
-                  <td>Phones</td>
-                  <td>50kg</td>
-                  <td>Yaba</td>
-                  <td>
-                    <span className={parcelStatus.one === "Delivered" ? "text-green-600 font-bold" : (parcelStatus.one === "Processing" ? "text-yellow-600 font-bold" : "text-red-600 font-bold")}>
-                      {parcelStatus.one}
-                    </span>
-                  </td>
-                  <td id="one">
-                    <a href="">
-                      <button className="bg-gray-400 text-white py-1 px-3 hover:bg-yellow-500">
-                        Change
-                      </button>
-                    </a>
-                  </td>
-                  <td>
-                    <select
-                      className="select-button"
-                      id="statusOne"
-                      onChange={(e) => getStatus("one", e)}
-                      value={parcelStatus.one}
-                    >
-                      <option value="Processing">Processing</option>
-                      <option value="Delivered">Delivered</option>
-                      <option value="Canceled">Canceled</option>
-                    </select>
-                  </td>
-                </tr>
-                <tr className="border-b border-gray-500">
-                  <td>&nbsp;</td>
-                  <td>Tablet</td>
-                  <td>30kg</td>
-                  <td>Lagos</td>
-                  <td>
-                    <span className={parcelStatus.six === "Delivered" ? "text-green-600 font-bold" : (parcelStatus.six === "Processing" ? "text-yellow-600 font-bold" : "text-red-600 font-bold")}>
-                      {parcelStatus.six}
-                    </span>
-                  </td>
-                  <td id="six">
-                    <a href="">
-                      <button className="bg-gray-400 text-white py-1 px-3 hover-bg-yellow-500">
-                        Change
-                      </button>
-                    </a>
-                  </td>
-                  <td>
-                    <select
-                      className="select-button"
-                      id="statusSix"
-                      onChange={(e) => getStatus("six", e)}
-                      value={parcelStatus.six}
-                    >
-                      <option value="Processing">Processing</option>
-                      <option value="Delivered">Delivered</option>
-                      <option value="Canceled">Canceled</option>
-                    </select>
-                  </td>
-                </tr>
-                <tr className="border-b border-gray-500">
-                  <td>&nbsp;</td>
-                  <td>Laptops</td>
-                  <td>5kg</td>
-                  <td>Ikeja</td>
-                  <td>
-                    <span className={parcelStatus.seven === "Delivered" ? "text-green-600 font-bold" : (parcelStatus.seven === "Processing" ? "text-yellow-600 font-bold" : "text-red-600 font-bold")}>
-                      {parcelStatus.seven}
-                    </span>
-                  </td>
-                  <td id="seven">
-                    <a href="">
-                      <button className="bg-gray-400 text-white py-1 px-3 hover-bg-yellow-500">
-                        Change
-                      </button>
-                    </a>
-                  </td>
-                  <td>
-                    <select
-                      className="select-button"
-                      id="statusSeven"
-                      onChange={(e) => getStatus("seven", e)}
-                      value={parcelStatus.seven}
-                    >
-                      <option value="Processing">Processing</option>
-                      <option value="Delivered">Delivered</option>
-                      <option value="Canceled">Canceled</option>
-                    </select>
-                  </td>
-                </tr>
-                {/* Add more rows for additional parcels */}
+                {parcels.map((parcel) => (
+                  <tr key={parcel.id} className="border-b border-gray-500">
+                    <td>&nbsp;</td>
+                    <td>{parcel.parcel_name}</td>
+                    <td>{parcel.weight} kg</td>
+                    <td>{parcel.origin}</td>
+                    <td>
+                      <span
+                        className={
+                          parcel.status === "Delivered"
+                            ? "text-green-600 font-bold"
+                            : parcel.status === "Processing"
+                            ? "text-yellow-600 font-bold"
+                            : "text-red-600 font-bold"
+                        }
+                      >
+                        {parcel.status}
+                      </span>
+                    </td>
+                    <td id="one">
+                      <a href="">
+                        <button className="bg-gray-400 text-white py-1 px-3 hover:bg-yellow-500">
+                          Change
+                        </button>
+                      </a>
+                    </td>
+                    <td>
+                      <select
+                        className="select-button"
+                        id={`status${parcel.id}`}
+                        onChange={(e) => getStatus(parcel.id, e)}
+                        value={parcel.status}
+                      >
+                        <option value="Processing">Processing</option>
+                        <option value="Delivered">Delivered</option>
+                        <option value="Canceled">Canceled</option>
+                      </select>
+                    </td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>
         </div>
       </section>
-
-      <footer className="bg-gray-900 text-white text-center py-2">
+  <footer className="bg-green-700 text-white text-center py-2">
         <p>
-          <span className="font-sunflower">Parcel<span className="text-yellow-500">Pal</span></span>, Copyright &copy; 2023
+          <span className="font-sunflower">
+            Parcel<span className="text-yellow-500">Pal</span>
+          </span>
+          , Copyright &copy; {new Date().getFullYear()}
         </p>
       </footer>
     </div>
+    
   );
 };
 
