@@ -26,6 +26,32 @@ const SendParcel = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Form submitted");
+
+    let id = localStorage.getItem('user_id');
+
+    let parcelData = {
+      user :id,
+      parcelName : parcelName,
+      receiver_name : receiverName,
+      receiver_phone_number : phoneNo,
+      weight : weight,
+      origin : pickup, 
+      destination : destination,
+      price : totalCost,
+      status : "Pending"
+
+    }
+    console.log(parcelData)
+    fetch('https://parcelpalserver.onrender.com/parcels/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(parcelData),
+    })
+      .then(r => r.json())
+      .then(data => console.log(data))
+      
   };
 
   return (

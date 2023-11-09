@@ -6,7 +6,8 @@ const Dashboard = () => {
 
   useEffect(() => {
     // Fetch parcels data from your API
-    fetch('/api/parcels') // Replace with your actual API endpoint
+    let id = localStorage.getItem('user_id');
+    fetch('https://parcelpalserver.onrender.com/parcels/' + id) 
       .then((response) => response.json())
       .then((data) => setParcels(data))
       .catch((error) => console.error(error));
@@ -25,6 +26,7 @@ const Dashboard = () => {
               </Link>
             </h1>
           </div>
+          {console.log(parcels)}
           <nav className="text-right bg-transparent ">
             <ul className="flex space-x-4">
               <li>
