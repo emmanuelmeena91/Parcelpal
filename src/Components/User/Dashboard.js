@@ -5,12 +5,15 @@ const Dashboard = () => {
   const [parcels, setParcels] = useState([]);
 
   useEffect(() => {
-    // Fetch parcels data from your API
     let id = localStorage.getItem('user_id');
-    fetch('https://parcelpalserver.onrender.com/parcels/' + id) 
-      .then((response) => response.json())
-      .then((data) => setParcels(data))
-      .catch((error) => console.error(error));
+    try {
+      fetch('https://parcelpalserver.onrender.com/parcels/') 
+        .then((response) => response.json())
+        .then((data) => setParcels(data.parcels))
+        .catch((error) => console.error(error));
+    } catch (error) {
+      console.error('Error fetching parcels:', error);
+    }
   }, []);
 
   return (
