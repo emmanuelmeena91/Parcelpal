@@ -105,10 +105,10 @@ const AdminDashboard = () => {
                 <tr className="bg-green-700">
                   <th className="py-2 px-4 font-semibold">Parcel</th>
                   <th className="py-2 px-4 font-semibold">Weight(kg)</th>
-                  <th className="py-2 px-4 font-semibold">Location</th>
+                  <th className="py-2 px-4 font-semibold">Origin</th>
                   <th className="py-2 px-4 font-semibold">Destination</th>
                   <th className="py-2 px-4 font-semibold">Status</th>
-                  <th className="py-2 px-4 font-semibold">Change Destination</th>
+                 
                   <th className="py-2 px-4 font-semibold">Change Status</th>
                 </tr>
               </thead>
@@ -132,13 +132,7 @@ const AdminDashboard = () => {
                         {parcel.status}
                       </span>
                     </td>
-                    <td id="one">
-                      <a href="">
-                        <button className="bg-gray-400 text-white py-1 px-3 hover:bg-yellow-500">
-                          Change
-                        </button>
-                      </a>
-                    </td>
+                  
                     <td>
                       <select
                         className="select-button"
