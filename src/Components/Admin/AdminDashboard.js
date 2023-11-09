@@ -5,16 +5,18 @@ const AdminDashboard = () => {
   const [parcels, setParcels] = useState([]);
 
   useEffect(() => {
-    // Fetch admin parcels data from your API (admin-specific data)
-    fetch("/api/admin-parcels") // Replace with your admin-specific API endpoint
+    try {
+      fetch(`https://parcelpalserver.onrender.com/parcels/`)
       .then((response) => response.json())
-      .then((data) => setParcels(data))
-      .catch((error) => console.error(error));
+        .then((data) => setParcels(data.parcels))
+        .catch((error) => console.error(error));
+    } catch (error) {
+      console.error('Error fetching parcels:', error);
+    }
   }, []);
 
   const getStatus = (id, event) => {
     const newStatus = event.target.value;
-    // You can update the status in your API here if needed
   };
 
   return (
