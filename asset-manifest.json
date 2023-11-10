@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/Parcelpal/static/css/main.20de3ddf.css",
-    "main.js": "/Parcelpal/static/js/main.f7cfd4f5.js",
+    "main.css": "/Parcelpal/static/css/main.ee5ab52f.css",
+    "main.js": "/Parcelpal/static/js/main.a9db3852.js",
     "static/js/787.d7d40af7.chunk.js": "/Parcelpal/static/js/787.d7d40af7.chunk.js",
     "static/media/fontawesome-webfont.svg?v=4.7.0": "/Parcelpal/static/media/fontawesome-webfont.c1e38fd9e0e74ba58f7a.svg",
     "static/media/fontawesome-webfont.eot": "/Parcelpal/static/media/fontawesome-webfont.8b43027f47b20503057d.eot",
@@ -10,12 +10,12 @@
     "static/media/fontawesome-webfont.woff2?v=4.7.0": "/Parcelpal/static/media/fontawesome-webfont.20fd1704ea223900efa9.woff2",
     "static/media/quantum-gradient.svg": "/Parcelpal/static/media/quantum-gradient.19645a40b7151d18fc0a.svg",
     "index.html": "/Parcelpal/index.html",
-    "main.20de3ddf.css.map": "/Parcelpal/static/css/main.20de3ddf.css.map",
-    "main.f7cfd4f5.js.map": "/Parcelpal/static/js/main.f7cfd4f5.js.map",
+    "main.ee5ab52f.css.map": "/Parcelpal/static/css/main.ee5ab52f.css.map",
+    "main.a9db3852.js.map": "/Parcelpal/static/js/main.a9db3852.js.map",
     "787.d7d40af7.chunk.js.map": "/Parcelpal/static/js/787.d7d40af7.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.20de3ddf.css",
-    "static/js/main.f7cfd4f5.js"
+    "static/css/main.ee5ab52f.css",
+    "static/js/main.a9db3852.js"
   ]
 }
