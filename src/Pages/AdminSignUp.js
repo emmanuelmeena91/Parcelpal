@@ -188,7 +188,7 @@ export default function AdminSignUpPage() {
   
             <button type="submit">Sign Up</button>
           </form>
-          <p>Already have an admin account? <Link to="/admin-login">Login here</Link></p>
+          <p>Already have an admin account? <Link to="/adminlogin">Login here</Link></p>
         </div>
       </div>
       {isLoading && (

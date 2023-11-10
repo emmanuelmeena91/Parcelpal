@@ -129,7 +129,7 @@ export default function AdminLoginPage() {
             <br />
               <button type="submit">Log In</button>
           </form>
-          <p>Don`t have an admin account? <Link to="/admin-signup">Register here</Link></p>
+          <p>Don`t have an admin account? <Link to="/adminsignup">Register here</Link></p>
         </div>
       </div>
       {isLoading && (
