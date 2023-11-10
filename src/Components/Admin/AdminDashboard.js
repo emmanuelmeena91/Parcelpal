@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 
 const AdminDashboard = () => {
   const [parcels, setParcels] = useState([]);
@@ -17,28 +15,15 @@ const AdminDashboard = () => {
     }
   }, []);
 
-  const handleStatusChange = async (id, newStatus) => {
-    try {
-      const response = await fetch(`https://parcelpalserver.onrender.com/parcels/${id}`, {
-        method: 'PATCH',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          id:id,
-          status: newStatus,
-        }),
-      });
+  const getStatus = (id, event) => {
+    const newStatus = event.target.value;
 
-      if (response.ok) {
-        toast.success("Parcel status updated successfully")
-      } else {
-        console.error(`Error updating status for parcel ${id}`);
-        toast.error("`Error updating status for parcel`.");
-      }
-    } catch (error) {
-      console.error('Network error:', error);
-    }
+    // Update the status for the specific parcel
+    const updatedParcels = parcels.map((parcel) =>
+      parcel.id === id ? { ...parcel, status: newStatus } : parcel
+    );
+
+    setParcels(updatedParcels);
   };
 
   return (
@@ -115,16 +100,16 @@ const AdminDashboard = () => {
         <div className="container mx-auto">
           <h2 className="text-2xl font-bold mb-4 text-green-50">All Admin Parcels</h2>
           <div className="w-full overflow-x-auto ">
-            <table className="w-full mx-auto border-collapse border border-gray-500 max-w-7xl">
+          <table className="w-full mx-auto border-collapse border border-gray-500 max-w-6xl">
               <thead>
                 <tr className="bg-green-700">
                   <th className="py-2 px-4 font-semibold">Parcel</th>
                   <th className="py-2 px-4 font-semibold">Weight(kg)</th>
-                  <th className="py-2 px-4 font-semibold">Origin</th>
+                  <th className="py-2 px-4 font-semibold">Location</th>
                   <th className="py-2 px-4 font-semibold">Destination</th>
                   <th className="py-2 px-4 font-semibold">Status</th>
-                 
-                  <th className="py-2 px-4 font-semibold">Change Status</th>
+                  {/* <th className="py-2 px-4 font-semibold">Change Destination</th> */}
+                  <th className="py-2 px-2 font-semibold">Change Status</th>
                 </tr>
               </thead>
               <tbody>
@@ -138,28 +123,34 @@ const AdminDashboard = () => {
                       <span
                         className={
                           parcel.status === "Delivered"
-                            ? "text-gray-200 font-bold"
+                            ? "text-gray-300 font-bold"
                             : parcel.status === "Processing"
-                            ? "text-gray-200 font-bold"
-                            : "text-gray-200 font-bold"
+                            ? "text-gray-300 font-bold"
+                            : "text-gray-300 font-bold"
                         }
                       >
                         {parcel.status}
                       </span>
                     </td>
-                  
+                    <td id="one">
+                      <a href="">
+                        {/* <button className="bg-gray-400 text-white py-1 px-3 hover:bg-yellow-500">
+                          Change
+                        </button> */}
+                      </a>
+                    </td>
                     <td>
-                    <select
-                      className="select-button"
-                      id={`status${parcel.id}`}
-                      onChange={(e) => handleStatusChange(parcel.id, e.target.value)}
-                      value={parcel.status}
-                    >
-                      <option value="Processing">Processing</option>
-                      <option value="Delivered">Delivered</option>
-                      <option value="Canceled">Canceled</option>
-                    </select>
-                  </td>
+                      <select
+                        className="select-button h-8"
+                        id={`status${parcel.id}`}
+                        onChange={(e) => getStatus(parcel.id, e)}
+                        value={parcel.status}
+                      >
+                        <option value="Processing">Processing</option>
+                        <option value="Delivered">Delivered</option>
+                        <option value="Canceled">Canceled</option>
+                      </select>
+                    </td>
                   </tr>
                 ))}
               </tbody>
@@ -175,7 +166,6 @@ const AdminDashboard = () => {
           , Copyright &copy; {new Date().getFullYear()}
         </p>
       </footer>
-      <ToastContainer />
     </div>
   );
 };
